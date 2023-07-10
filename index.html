@@ -4,8 +4,20 @@
 <center>
 <br><br>
   <hr>
-<h1>Hello 陌斯</h1>
+<h1>Hello <div id="add_wz_a_gg_text"></div> </h1>
   <hr>
 </center>
 </body>
+<script>
+let  add_a_gg_text_js= {
+        "陌斯":"?",
+}
+let  add_a_gg_text_js_html;
+for(let add_a_gg_text_js_key in add_a_gg_text_js) {
+add_a_gg_text_js_html = '<h1>'+add_a_gg_text_js_key+'</h1>';
+}
+if(add_a_gg_text_js_html!=undefined){
+document.getElementById("add_wz_a_gg_text").innerHTML = add_a_gg_text_js_html;
+}
+</script>
 </html>
