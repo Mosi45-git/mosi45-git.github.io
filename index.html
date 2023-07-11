@@ -26,7 +26,6 @@
 		<meta property="og:site_name" content="{标题}">
 		<meta property="og:description" content="{描述}" />
 		<script src="./access/jquery-2.2.4.min.js"></script>
-		<script src="./access/blog.js"></script>
 		<script src="./access/c_html_js_add.js"></script>
 		<script src="./access/swiper.min.js"></script>
 		<link href="./access/swiper.min.css" type="text/css" media="all"
@@ -51,10 +50,10 @@
 							<a title="繁简转换" class="top-tnrt" href="javascript:translatePage();" id="zh_tw">繁体</a>
 							<a href="javascript:;" title="点击搜索"><i class="fa fa-search"></i></a>
 							<div class="top_search ">
-								<form method="post" name="search"
-									action="https://www.vpsguo.com/zb_system/cmd.php?act=search" class="searchform">
-									<input type="text" name="q" placeholder="输入关键字..." class="text">
-									<input type="submit" class="btn" value="搜索">
+								<form method="get" name="search"
+									action="#" class="searchform">
+									<input type="text" placeholder="输入关键字..." class="text">
+									<input type="submit" class="btn" value="搜索" onclick="com_search();">
 								</form>
 							</div>
 						</div>
@@ -64,22 +63,10 @@
 							</div>
 							<div id="monavber" class="header-nav" data-type="index" data-infoid="index">
 								<aside class="mobile_aside mobile_nav">
-									<div class="mobile-menu">
+									<div id="site-menu-web" class="mobile-menu">
 										<ul id="nav" class="nav-pills navbar">
-											<li class="navbar-item "><a href="https://www.vpsguo.com/" title=""><i
-														class="icon font-home"></i>首页</a></li>
-											<li class="navbar-item "><a href="https://www.vpsguo.com/?cate=2"
-													title=""><i class="icon font-yunfuwuqi"></i>VPS优惠</a></li>
-											<li class="navbar-item "><a href="https://www.vpsguo.com/?cate=3"
-													title=""><i class="icon font-yunfuwuqi"></i>VPS测评</a></li>
-											<li class="navbar-item "><a href="https://www.vpsguo.com/?cate=4"
-													title=""><i class="icon font-cdn"></i>CDN</a></li>
-											<li class="navbar-item "><a href="https://www.vpsguo.com/?cate=5"
-													title=""><i
-														class="icon font-zixunguanlizixunfuwuguanli"></i>好文分享</a></li>
-											<li class="navbar-item "><a href="https://www.vpsguo.com/?cate=6"
-													title=""><i
-														class="icon font-zixunguanlizixunfuwuguanli"></i>资源分享</a></li>
+											<li class="navbar-item "><a href="/" title=""><i
+													class="icon font-home"></i>首页</a></li>
 										</ul>
 									</div>
 								</aside>
@@ -253,18 +240,7 @@
 		<div class="none">
 			<script src="./access/custom.js"></script>
 			<script src="./access/zh_tw.js"></script>
+			<script src="./access/home.js"></script>
 		</div>
 	</body>
-	<script>
-		$("title").text(page_http_get_configs['title']+" - "+page_http_get_configs['titles']);
-		$('meta[name="description"]')[0].content=page_http_get_configs['description'];
-		$('meta[name="keywords"]')[0].content=page_http_get_configs['description'];
-		$('meta[property="og:type"]')[0].content=page_http_get_configs['type'];
-		$('meta[property="og:title"]')[0].content=page_http_get_configs['title']+" - "+page_http_get_configs['titles'];
-		$('meta[property="og:site_name"]')[0].content=page_http_get_configs['title']+" - "+page_http_get_configs['titles'];
-		$('meta[property="og:description"]')[0].content=page_http_get_configs['description'];
-		$("#logo_title").attr("title",page_http_get_configs['title']);
-		$("#logo_titles").text(page_http_get_configs['title']);
-		$("#web_title_end").text(page_http_get_configs['title']);
-	</script>
 </html>
