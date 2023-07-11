@@ -9,10 +9,19 @@
 		<meta name="force-rendering" content="webkit" />
 		<meta http-equiv="Cache-Control" content="no-transform" />
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<script>
+			const page_http_get_config = new XMLHttpRequest();
+			const page_http_get_config_url='./config/config.bin';
+			page_http_get_config.open("GET", page_http_get_config_url);
+			page_http_get_config.send();
+			page_http_get_config.onreadystatechange = (e) => {
+				page_http_get_configs=JSON.parse(page_http_get_config.responseText);
+			}
+		</script>
 		<title>{标题}</title>
 		<meta name="description" content="{描述}" />
 		<meta name="keywords" content="{关键词}" />
-		<meta property="og:type" content="index" /><!-- index/article/book/movie -->
+		<meta property="og:type" content="{网页类型}" /><!-- index/article/book/movie -->
 		<meta property="og:title" content="{标题}" />
 		<meta property="og:site_name" content="{标题}">
 		<meta property="og:description" content="{描述}" />
@@ -35,7 +44,7 @@
 				<div id="header">
 					<section class="container">
 						<h1 class="logo">
-							<a href="/" title="{标题}" rel="home"><strong>{标题}</strong><b class="shan"></b></a>
+							<a id="logo_title" href="/" title="{标题}" rel="home"><strong id="logo_titles">{标题}</strong><b class="shan"></b></a>
 						</h1>
 						<div class="nav-login"></div>
 						<div class="search_top">
@@ -80,7 +89,7 @@
 				</div>
 			</header>
 			<div class="slide-wrap container clearfix">
-				<div class="main fl">
+				<div class="fl">
 					<div class="side-hot">
 						<div id="postlist" class="home-main index-page"><!--页面主体信息-->
 							<article class="post-list leftpic wow fadeInDown" id="list1">
@@ -220,7 +229,7 @@
 				</div>
 				<div class="footer_bottom">
 					<p class="foot-text foot-top left2">
-						Copyright © <a id="web_title_end" href="/">{标题}</a>版权所有
+						Copyright ©<a id="web_title_end">{标题}</a>版权所有
 						<hr>
 						本站已安全运行<span id="iday"></span>天 
 						<script>
@@ -246,4 +255,16 @@
 			<script src="./access/zh_tw.js"></script>
 		</div>
 	</body>
+	<script>
+		$("title").text(page_http_get_configs['title']+" - "+page_http_get_configs['titles']);
+		$('meta[name="description"]')[0].content=page_http_get_configs['description'];
+		$('meta[name="keywords"]')[0].content=page_http_get_configs['description'];
+		$('meta[property="og:type"]')[0].content=page_http_get_configs['type'];
+		$('meta[property="og:title"]')[0].content=page_http_get_configs['title']+" - "+page_http_get_configs['titles'];
+		$('meta[property="og:site_name"]')[0].content=page_http_get_configs['title']+" - "+page_http_get_configs['titles'];
+		$('meta[property="og:description"]')[0].content=page_http_get_configs['description'];
+		$("#logo_title").attr("title",page_http_get_configs['title']);
+		$("#logo_titles").text(page_http_get_configs['title']);
+		$("#web_title_end").text(page_http_get_configs['title']);
+	</script>
 </html>
