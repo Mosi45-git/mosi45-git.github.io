@@ -714,11 +714,11 @@ function checkCookie(){
 //switchNightMode
 function switchNightMode() {
 	if (getCookie('night') == '1' || $('body').hasClass('night')) {
-		setCookie('night', '0',12);
+		setCookie('night', '0',24);
 		$('body').removeClass('night');
 		console.log('夜间模式关闭');
 	} else {
-		setCookie('night', '1',6);
+		setCookie('night', '1',24);
 		$('body').addClass('night');
 		console.log('夜间模式开启');
 	}
