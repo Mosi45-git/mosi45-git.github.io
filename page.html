@@ -1,0 +1,139 @@
+<html xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+		<meta name="applicable-device" content="pc,mobile">
+		<meta name="renderer" content="webkit" />
+		<meta name="force-rendering" content="webkit" />
+		<meta http-equiv="Cache-Control" content="no-transform" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<script>
+			const page_http_get_config = new XMLHttpRequest();
+			const page_http_get_config_url = './config/config.bin';
+			page_http_get_config.open("GET", page_http_get_config_url);
+			page_http_get_config.send();
+			page_http_get_config.onreadystatechange = (e) => {
+				page_http_get_configs = JSON.parse(page_http_get_config.responseText);
+			}
+		</script>
+		<title>{标题}</title>
+		<meta name="description" content="{描述}" />
+		<meta name="keywords" content="{关键词}" />
+		<meta property="og:type" content="{网页类型}" /><!-- index/article/book/movie -->
+		<meta property="og:title" content="{标题}" />
+		<meta property="og:site_name" content="{标题}">
+		<meta property="og:description" content="{描述}" />
+		<script src="./access/jquery-2.2.4.min.js"></script>
+		<script src="./access/c_html_js_add.js"></script>
+		<script src="./access/swiper.min.js"></script>
+		<link href="./access/swiper.min.css" type="text/css" media="all" rel="stylesheet" rev="stylesheet" />
+		<link href="./access/animate.css" type="text/css" media="all" rel="stylesheet" />
+		<link href="./access/font-awesome.min.css" rel="stylesheet">
+		<link href="./access/style.css" type="text/css" media="all" rel="stylesheet" />
+	</head>
+	<body class="home-index">
+		<div id="percentageCounter"></div>
+		<div id="pjax_on">
+			<header id="header_main">
+				<div id="header">
+					<section class="container">
+						<h1 class="logo">
+							<a id="logo_title" href="/" title="{标题}" rel="home"><strong id="logo_titles">{标题}</strong><b
+									class="shan"></b></a>
+						</h1>
+						<div class="nav-login"></div>
+						<div class="search_top">
+							<a title="繁简转换" class="top-tnrt" href="javascript:translatePage();" id="zh_tw">繁体</a>
+							<a href="javascript:;" title="点击搜索"><i class="fa fa-search"></i></a>
+							<div class="top_search ">
+								<form method="get" name="search" action="#" class="searchform">
+									<input type="text" placeholder="输入关键字..." class="text">
+									<input type="submit" class="btn" value="搜索" onclick="com_search();">
+								</form>
+							</div>
+						</div>
+						<nav class="menu-nav">
+							<div class="nav-sjlogo">
+								<i class="nav-bar"><span></span><span></span><span></span></i>
+							</div>
+							<div id="monavber" class="header-nav" data-type="index" data-infoid="index">
+								<aside class="mobile_aside mobile_nav">
+									<div id="site-menu-web" class="mobile-menu">
+										<ul id="nav" class="nav-pills navbar">
+											<li class="navbar-item "><a href="/" title=""><i
+														class="icon font-home"></i>首页</a></li>
+										</ul>
+									</div>
+								</aside>
+							</div>
+						</nav>
+					</section>
+				</div>
+			</header>
+			<div class="slide-wrap container clearfix" style="transform: none;">
+<body_data>
+	<script>
+		var page_type = "article";
+		var page_title = "5YWN6LSj5aOw5piO";
+		var page_body = "CQkJCQkJCQk8aDEgaWQ9Imxpc3RyZWUtbGlzdDAiIGNsYXNzPSJsaXN0cmVlLWxpc3QgY3VycmVudCIKCQkJCQkJCQkJc3R5bGU9ImJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbi10b3A6IDIzcHg7IG1hcmdpbi1ib3R0b206IDIzcHg7IHBhZGRpbmctdG9wOiAwcHg7IHBhZGRpbmctYm90dG9tOiAwcHg7IHBhZGRpbmctbGVmdDogMTZweDsgb3V0bGluZTogMHB4OyBib3JkZXItdG9wOiAwcHg7IGJvcmRlci1yaWdodDogMHB4OyBib3JkZXItYm90dG9tOiAwcHg7IGJvcmRlci1pbWFnZTogaW5pdGlhbDsgdmVydGljYWwtYWxpZ246IGJhc2VsaW5lOyBjb2xvcjogIzY2NjY2NjsgZm9udC1mYW1pbHk6IEhhcm1vbnlPU19TYW5zOyB0ZXh0LWFsaWduOiBqdXN0aWZ5OyB3aGl0ZS1zcGFjZTogbm9ybWFsOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuNjgpOyI+CgkJCQkJCQkJCee9keermeWjsOaYjjwvaDE+CgkJCQkJCQkJPHAKCQkJCQkJCQkJc3R5bGU9ImJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbi1ib3R0b206IDEwcHg7IHBhZGRpbmc6IDBweDsgb3V0bGluZTogMHB4OyBib3JkZXI6IDBweDsgdmVydGljYWwtYWxpZ246IGJhc2VsaW5lOyBmb250LXNpemU6IDE1cHg7IGxpbmUtaGVpZ2h0OiAyN3B4OyBwb3NpdGlvbjogcmVsYXRpdmU7IGNvbG9yOiByZ2JhKDU4LCA1OCwgNTgsIDAuODgpOyBmb250LWZhbWlseTogSGFybW9ueU9TX1NhbnM7IHRleHQtYWxpZ246IGp1c3RpZnk7IHdoaXRlLXNwYWNlOiBub3JtYWw7IGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC42OCk7Ij4KCQkJCQkJCQkJMeOAgeWHuuS6juS8oOmAkuS/oeaBr+S5i+ebrueahO+8jOacrOermeWPr+iDveS8muivr+WIiuWPkeaNn+Wus+aIluW9seWTjeaCqOeahOWQiOazleadg+ebiu+8jOivt+aCqOiwheino++8mzwvcD4KCQkJCQkJCQk8cAoJCQkJCQkJCQlzdHlsZT0iYm94LXNpemluZzogYm9yZGVyLWJveDsgbWFyZ2luLWJvdHRvbTogMTBweDsgcGFkZGluZzogMHB4OyBvdXRsaW5lOiAwcHg7IGJvcmRlcjogMHB4OyB2ZXJ0aWNhbC1hbGlnbjogYmFzZWxpbmU7IGZvbnQtc2l6ZTogMTVweDsgbGluZS1oZWlnaHQ6IDI3cHg7IHBvc2l0aW9uOiByZWxhdGl2ZTsgY29sb3I6IHJnYmEoNTgsIDU4LCA1OCwgMC44OCk7IGZvbnQtZmFtaWx5OiBIYXJtb255T1NfU2FuczsgdGV4dC1hbGlnbjoganVzdGlmeTsgd2hpdGUtc3BhY2U6IG5vcm1hbDsgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjY4KTsiPgoJCQkJCQkJCQky44CB5Zug5pe26Ze044CB57K+5Yqb5pyJ6ZmQ77yM5oiR5Lus5peg5rOV5LiA5LiA5qC45a6e5q+P5LiA5p2h5raI5oGv55qE55yf5a6e5oCn77yM5L2G5oiR5Lus5Lya5Zyo5Y+R5biD5LmL5YmN5bC95pyA5aSn5Yqq5Yqb5p2l5qC45a6e6L+Z5Lqb5L+h5oGv77ybPC9wPgoJCQkJCQkJCTxwCgkJCQkJCQkJCXN0eWxlPSJib3gtc2l6aW5nOiBib3JkZXItYm94OyBtYXJnaW4tYm90dG9tOiAxMHB4OyBwYWRkaW5nOiAwcHg7IG91dGxpbmU6IDBweDsgYm9yZGVyOiAwcHg7IHZlcnRpY2FsLWFsaWduOiBiYXNlbGluZTsgZm9udC1zaXplOiAxNXB4OyBsaW5lLWhlaWdodDogMjdweDsgcG9zaXRpb246IHJlbGF0aXZlOyBjb2xvcjogcmdiYSg1OCwgNTgsIDU4LCAwLjg4KTsgZm9udC1mYW1pbHk6IEhhcm1vbnlPU19TYW5zOyB0ZXh0LWFsaWduOiBqdXN0aWZ5OyB3aGl0ZS1zcGFjZTogbm9ybWFsOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuNjgpOyI+CgkJCQkJCQkJCTPjgIHml6Dorrrlh7rkuo7kvZXnp43nm67nmoTopoHmsYLmnKznq5nliKDpmaTlhoXlrrnvvIzmgqjlnYfpnIDopoHmj5Dkvpvnm7jlhbPor4HmmI7vvIzkuJTov5vooYzmnInmlYjnmoTlj4vlpb3msp/pgJrvvIzlkKbliJnkuI3kuojlpITnkIbvvJs8L3A+CgkJCQkJCQkJPGgxIGlkPSJsaXN0cmVlLWxpc3QxIiBjbGFzcz0ibGlzdHJlZS1saXN0IgoJCQkJCQkJCQlzdHlsZT0iYm94LXNpemluZzogYm9yZGVyLWJveDsgbWFyZ2luLXRvcDogMjNweDsgbWFyZ2luLWJvdHRvbTogMjNweDsgcGFkZGluZy10b3A6IDBweDsgcGFkZGluZy1ib3R0b206IDBweDsgcGFkZGluZy1sZWZ0OiAxNnB4OyBvdXRsaW5lOiAwcHg7IGJvcmRlci10b3A6IDBweDsgYm9yZGVyLXJpZ2h0OiAwcHg7IGJvcmRlci1ib3R0b206IDBweDsgYm9yZGVyLWltYWdlOiBpbml0aWFsOyB2ZXJ0aWNhbC1hbGlnbjogYmFzZWxpbmU7IGNvbG9yOiAjNjY2NjY2OyBmb250LWZhbWlseTogSGFybW9ueU9TX1NhbnM7IHRleHQtYWxpZ246IGp1c3RpZnk7IHdoaXRlLXNwYWNlOiBub3JtYWw7IGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC42OCk7Ij4KCQkJCQkJCQkJ5Li75L2T6KaB5rGCPC9oMT4KCQkJCQkJCQk8cAoJCQkJCQkJCQlzdHlsZT0iYm94LXNpemluZzogYm9yZGVyLWJveDsgbWFyZ2luLWJvdHRvbTogMTBweDsgcGFkZGluZzogMHB4OyBvdXRsaW5lOiAwcHg7IGJvcmRlcjogMHB4OyB2ZXJ0aWNhbC1hbGlnbjogYmFzZWxpbmU7IGZvbnQtc2l6ZTogMTVweDsgbGluZS1oZWlnaHQ6IDI3cHg7IHBvc2l0aW9uOiByZWxhdGl2ZTsgY29sb3I6IHJnYmEoNTgsIDU4LCA1OCwgMC44OCk7IGZvbnQtZmFtaWx5OiBIYXJtb255T1NfU2FuczsgdGV4dC1hbGlnbjoganVzdGlmeTsgd2hpdGUtc3BhY2U6IG5vcm1hbDsgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjY4KTsiPgoJCQkJCQkJCQk044CB5peg6K665piv5Zug5oiR56uZ5L615p2D6L+Y5piv5YiK5Y+R5YaF5a655Y+v6IO95b2x5ZON5Yiw5oKo55qE5p2D55uK77yM5omA5pyJ5Yig6Zmk44CB5L+u5pS56K+35rGC5LuF5YWB6K6455u05o6l5p2D5Yip5Lq655Sz6K+377yM5LiU6L+b6KGM5pyJ5pWI55qE5Y+L5aW95rKf6YCa77yM5ZCm5YiZ5LiN5LqI5aSE55CGOzwvcD4KCQkJCQkJCQk8cAoJCQkJCQkJCQlzdHlsZT0iYm94LXNpemluZzogYm9yZGVyLWJveDsgbWFyZ2luLWJvdHRvbTogMTBweDsgcGFkZGluZzogMHB4OyBvdXRsaW5lOiAwcHg7IGJvcmRlcjogMHB4OyB2ZXJ0aWNhbC1hbGlnbjogYmFzZWxpbmU7IGZvbnQtc2l6ZTogMTVweDsgbGluZS1oZWlnaHQ6IDI3cHg7IHBvc2l0aW9uOiByZWxhdGl2ZTsgY29sb3I6IHJnYmEoNTgsIDU4LCA1OCwgMC44OCk7IGZvbnQtZmFtaWx5OiBIYXJtb255T1NfU2FuczsgdGV4dC1hbGlnbjoganVzdGlmeTsgd2hpdGUtc3BhY2U6IG5vcm1hbDsgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjY4KTsiPgoJCQkJCQkJCQk144CB5oKo5aaC5p6c5biM5pyb5Yig6Zmk44CB5L+u5pS55YaF5a6577yM6aaW5YWI5oKo5b+F6aG75piv55u05o6l5p2D5Yip5Lq65LiU5b+F6aG75Y+v5Lul5o+Q5L6b55u45YWz6K+B5piO5paH5Lu277yM5LiU6L+b6KGM5pyJ5pWI55qE5Y+L5aW95rKf6YCa77yM5ZCm5YiZ5LiN5LqI5aSE55CGOzwvcD4KCQkJCQkJCQk8cAoJCQkJCQkJCQlzdHlsZT0iYm94LXNpemluZzogYm9yZGVyLWJveDsgbWFyZ2luLWJvdHRvbTogMTBweDsgcGFkZGluZzogMHB4OyBvdXRsaW5lOiAwcHg7IGJvcmRlcjogMHB4OyB2ZXJ0aWNhbC1hbGlnbjogYmFzZWxpbmU7IGZvbnQtc2l6ZTogMTVweDsgbGluZS1oZWlnaHQ6IDI3cHg7IHBvc2l0aW9uOiByZWxhdGl2ZTsgY29sb3I6IHJnYmEoNTgsIDU4LCA1OCwgMC44OCk7IGZvbnQtZmFtaWx5OiBIYXJtb255T1NfU2FuczsgdGV4dC1hbGlnbjoganVzdGlmeTsgd2hpdGUtc3BhY2U6IG5vcm1hbDsgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjY4KTsiPgoJCQkJCQkJCQk244CB6Z2e55u05o6l5p2D5Yip5Lq65L6L5aaC5YWz6IGU5YWs5Y+444CB5pyL5Y+L562J77yM6ZyA5oyB5pyJ55u05o6l5p2D5Yip5Lq655qE5o6I5p2D6K+B5piO77yM5LiU6L+b6KGM5pyJ5pWI55qE5Y+L5aW95rKf6YCa77yM5ZCm5YiZ5LiN5LqI5aSE55CGOzwvcD4KCQkJCQkJCQk8aDEgaWQ9Imxpc3RyZWUtbGlzdDIiIGNsYXNzPSJsaXN0cmVlLWxpc3QiCgkJCQkJCQkJCXN0eWxlPSJib3gtc2l6aW5nOiBib3JkZXItYm94OyBtYXJnaW4tdG9wOiAyM3B4OyBtYXJnaW4tYm90dG9tOiAyM3B4OyBwYWRkaW5nLXRvcDogMHB4OyBwYWRkaW5nLWJvdHRvbTogMHB4OyBwYWRkaW5nLWxlZnQ6IDE2cHg7IG91dGxpbmU6IDBweDsgYm9yZGVyLXRvcDogMHB4OyBib3JkZXItcmlnaHQ6IDBweDsgYm9yZGVyLWJvdHRvbTogMHB4OyBib3JkZXItaW1hZ2U6IGluaXRpYWw7IHZlcnRpY2FsLWFsaWduOiBiYXNlbGluZTsgY29sb3I6ICM2NjY2NjY7IGZvbnQtZmFtaWx5OiBIYXJtb255T1NfU2FuczsgdGV4dC1hbGlnbjoganVzdGlmeTsgd2hpdGUtc3BhY2U6IG5vcm1hbDsgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjY4KTsiPgoJCQkJCQkJCQnlpITnkIbmtYHnqIs8L2gxPgoJCQkJCQkJCTxwCgkJCQkJCQkJCXN0eWxlPSJib3gtc2l6aW5nOiBib3JkZXItYm94OyBtYXJnaW4tYm90dG9tOiAxMHB4OyBwYWRkaW5nOiAwcHg7IG91dGxpbmU6IDBweDsgYm9yZGVyOiAwcHg7IHZlcnRpY2FsLWFsaWduOiBiYXNlbGluZTsgZm9udC1zaXplOiAxNXB4OyBsaW5lLWhlaWdodDogMjdweDsgcG9zaXRpb246IHJlbGF0aXZlOyBjb2xvcjogcmdiYSg1OCwgNTgsIDU4LCAwLjg4KTsgZm9udC1mYW1pbHk6IEhhcm1vbnlPU19TYW5zOyB0ZXh0LWFsaWduOiBqdXN0aWZ5OyB3aGl0ZS1zcGFjZTogbm9ybWFsOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuNjgpOyI+CgkJCQkJCQkJCTfjgIHmiYDpnIDmnZDmlpnvvJrnm7TmjqXmnYPliKnkurrnmoTor4HmmI7mlofku7bjgIHmnYPliKnkurrnu5nkuojlpITnkIbkurrnmoTmjojmnYPmlofku7bjgIHliKDmlLnor7fmsYLmlofku7bvvJs8L3A+CgkJCQkJCQkJPHAKCQkJCQkJCQkJc3R5bGU9ImJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbi1ib3R0b206IDEwcHg7IHBhZGRpbmc6IDBweDsgb3V0bGluZTogMHB4OyBib3JkZXI6IDBweDsgdmVydGljYWwtYWxpZ246IGJhc2VsaW5lOyBmb250LXNpemU6IDE1cHg7IGxpbmUtaGVpZ2h0OiAyN3B4OyBwb3NpdGlvbjogcmVsYXRpdmU7IGNvbG9yOiByZ2JhKDU4LCA1OCwgNTgsIDAuODgpOyBmb250LWZhbWlseTogSGFybW9ueU9TX1NhbnM7IHRleHQtYWxpZ246IGp1c3RpZnk7IHdoaXRlLXNwYWNlOiBub3JtYWw7IGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC42OCk7Ij4KCQkJCQkJCQkJOOOAgeaVtOeQhuWujOaIkOS4iui/sOadkOaWmeWQjuWwhuWJjeW+gOW5s+WPsOeUteaKpee+pOiBlOezu+euoeeQhuWRmOi/m+ihjOayn+mAmuW3peS9nO+8mzwvcD4KCQkJCQkJCQk8cAoJCQkJCQkJCQlzdHlsZT0iYm94LXNpemluZzogYm9yZGVyLWJveDsgbWFyZ2luLWJvdHRvbTogMTBweDsgcGFkZGluZzogMHB4OyBvdXRsaW5lOiAwcHg7IGJvcmRlcjogMHB4OyB2ZXJ0aWNhbC1hbGlnbjogYmFzZWxpbmU7IGZvbnQtc2l6ZTogMTVweDsgbGluZS1oZWlnaHQ6IDI3cHg7IHBvc2l0aW9uOiByZWxhdGl2ZTsgY29sb3I6IHJnYmEoNTgsIDU4LCA1OCwgMC44OCk7IGZvbnQtZmFtaWx5OiBIYXJtb255T1NfU2FuczsgdGV4dC1hbGlnbjoganVzdGlmeTsgd2hpdGUtc3BhY2U6IG5vcm1hbDsgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjY4KTsiPgoJCQkJCQkJCQk544CB5rOo5oSPIDog5p2Q5paZ5L+h5oGv5Lya5Lil5qC85a6h5p+l77yM6Iul5rWB56iL5Lit5Lu75LiA5q2l6aqk5Ye6546w6Zeu6aKY55qG5LiN5LqI5aSE55CG77ybPC9wPgoJCQkJCQkJCTxoMSBpZD0ibGlzdHJlZS1saXN0MyIgY2xhc3M9Imxpc3RyZWUtbGlzdCIKCQkJCQkJCQkJc3R5bGU9ImJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbi10b3A6IDIzcHg7IG1hcmdpbi1ib3R0b206IDIzcHg7IHBhZGRpbmctdG9wOiAwcHg7IHBhZGRpbmctYm90dG9tOiAwcHg7IHBhZGRpbmctbGVmdDogMTZweDsgb3V0bGluZTogMHB4OyBib3JkZXItdG9wOiAwcHg7IGJvcmRlci1yaWdodDogMHB4OyBib3JkZXItYm90dG9tOiAwcHg7IGJvcmRlci1pbWFnZTogaW5pdGlhbDsgdmVydGljYWwtYWxpZ246IGJhc2VsaW5lOyBjb2xvcjogIzY2NjY2NjsgZm9udC1mYW1pbHk6IEhhcm1vbnlPU19TYW5zOyB0ZXh0LWFsaWduOiBqdXN0aWZ5OyB3aGl0ZS1zcGFjZTogbm9ybWFsOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuNjgpOyI+CgkJCQkJCQkJCeWkh+azqO+8mjwvaDE+CgkJCQkJCQkJPHAKCQkJCQkJCQkJc3R5bGU9ImJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbi1ib3R0b206IDEwcHg7IHBhZGRpbmc6IDBweDsgb3V0bGluZTogMHB4OyBib3JkZXI6IDBweDsgdmVydGljYWwtYWxpZ246IGJhc2VsaW5lOyBmb250LXNpemU6IDE1cHg7IGxpbmUtaGVpZ2h0OiAyN3B4OyBwb3NpdGlvbjogcmVsYXRpdmU7IGNvbG9yOiByZ2JhKDU4LCA1OCwgNTgsIDAuODgpOyBmb250LWZhbWlseTogSGFybW9ueU9TX1NhbnM7IHRleHQtYWxpZ246IGp1c3RpZnk7IHdoaXRlLXNwYWNlOiBub3JtYWw7IGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC42OCk7Ij4KCQkJCQkJCQkJMOOAgeacrOermeWdmuaMgeWujOWFqOW8gOaUvuermeWGheS/oeaBr+i1hOa6kDs8L3A+CgkJCQkJCQkJPHAKCQkJCQkJCQkJc3R5bGU9ImJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbi1ib3R0b206IDEwcHg7IHBhZGRpbmc6IDBweDsgb3V0bGluZTogMHB4OyBib3JkZXI6IDBweDsgdmVydGljYWwtYWxpZ246IGJhc2VsaW5lOyBmb250LXNpemU6IDE1cHg7IGxpbmUtaGVpZ2h0OiAyN3B4OyBwb3NpdGlvbjogcmVsYXRpdmU7IGNvbG9yOiByZ2JhKDU4LCA1OCwgNTgsIDAuODgpOyBmb250LWZhbWlseTogSGFybW9ueU9TX1NhbnM7IHRleHQtYWxpZ246IGp1c3RpZnk7IHdoaXRlLXNwYWNlOiBub3JtYWw7IGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC42OCk7Ij4KCQkJCQkJCQkJMeOAgeS4uuS/neivgeacrOermeato+W4uOi/kOS9nO+8jOWHoeaYr+aXoOazleaPkOS+m+WujOaVtOivgeaYjuaWh+S7tueahOivt+axguaIluS4jeiDvei/m+ihjOacieaViOeahOWPi+Wlveayn+mAmueahO+8jOacrOermeS4gOW+i+S4jeS6iOWkhOeQhu+8jOivt+iwheinozs8L3A+CgkJCQkJCQkJPHAKCQkJCQkJCQkJc3R5bGU9ImJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbi1ib3R0b206IDEwcHg7IHBhZGRpbmc6IDBweDsgb3V0bGluZTogMHB4OyBib3JkZXI6IDBweDsgdmVydGljYWwtYWxpZ246IGJhc2VsaW5lOyBmb250LXNpemU6IDE1cHg7IGxpbmUtaGVpZ2h0OiAyN3B4OyBwb3NpdGlvbjogcmVsYXRpdmU7IGNvbG9yOiByZ2JhKDU4LCA1OCwgNTgsIDAuODgpOyBmb250LWZhbWlseTogSGFybW9ueU9TX1NhbnM7IHRleHQtYWxpZ246IGp1c3RpZnk7IHdoaXRlLXNwYWNlOiBub3JtYWw7IGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC42OCk7Ij4KCQkJCQkJCQkJMuOAgeWboOaXtumXtOeyvuWKm+aciemZkO+8jOWHoeaYr+aXoOazleaPkOS+m+WujOaVtOivgeaYjuaWh+S7tueahOivt+axguaIluS4jeiDvei/m+ihjOacieaViOeahOWPi+Wlveayn+mAmueahO+8jOacrOermeWdh+S4jeS6iOWkhOeQhu+8jOivt+iwheinozs8L3A+CgkJCQkJCQkJPHAKCQkJCQkJCQkJc3R5bGU9ImJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbi1ib3R0b206IDEwcHg7IHBhZGRpbmc6IDBweDsgb3V0bGluZTogMHB4OyBib3JkZXI6IDBweDsgdmVydGljYWwtYWxpZ246IGJhc2VsaW5lOyBmb250LXNpemU6IDE1cHg7IGxpbmUtaGVpZ2h0OiAyN3B4OyBwb3NpdGlvbjogcmVsYXRpdmU7IGNvbG9yOiByZ2JhKDU4LCA1OCwgNTgsIDAuODgpOyBmb250LWZhbWlseTogSGFybW9ueU9TX1NhbnM7IHRleHQtYWxpZ246IGp1c3RpZnk7IHdoaXRlLXNwYWNlOiBub3JtYWw7IGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC42OCk7Ij4KCQkJCQkJCQkJM+OAgeespuWQiOWIoOaUueadoeS7tueahOivt+axguS4lOe7j+i/h+acieaViOeahOWPi+Wlveayn+mAmuWQju+8jOaXoOiuuuaYr+WQpuaMieeFp+aCqOeahOimgeaxguWIoOaUuemhtemdou+8jOacrOermeWdh+S8muWcqDcy5bCP5pe25YaF6L+b6KGM5aSE55CGOzwvcD4KCQkJCQkJCQk8cAoJCQkJCQkJCQlzdHlsZT0iYm94LXNpemluZzogYm9yZGVyLWJveDsgbWFyZ2luLWJvdHRvbTogMTBweDsgcGFkZGluZzogMHB4OyBvdXRsaW5lOiAwcHg7IGJvcmRlcjogMHB4OyB2ZXJ0aWNhbC1hbGlnbjogYmFzZWxpbmU7IGZvbnQtc2l6ZTogMTVweDsgbGluZS1oZWlnaHQ6IDI3cHg7IHBvc2l0aW9uOiByZWxhdGl2ZTsgY29sb3I6IHJnYmEoNTgsIDU4LCA1OCwgMC44OCk7IGZvbnQtZmFtaWx5OiBIYXJtb255T1NfU2FuczsgdGV4dC1hbGlnbjoganVzdGlmeTsgd2hpdGUtc3BhY2U6IG5vcm1hbDsgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjY4KTsiPgoJCQkJCQkJCQk044CB5pys56uZ5LiN5o6l5Y+X5Lu75L2V5LuY6LS55Yig5biWKOWQg+eTnOexu+S4juS/oeaBr+exu+mZpOWklinjgIHkuqbmnKrmjojmnYPku7vkvZXku6PnkIblhazlj7jotJ/otKPliKDluJbvvIzor7fli7/ovbvkv6Hku7vkvZXosKPkvKDosKjpmLLkuIrlvZPlj5fpqpfvvIE8L3A+CgkJCQkJCQkJPHA+Jm5ic3A7PC9wPgoJCQkJCQkJCTxwPjxicj48L3A+";
+	</script>
+</body_data>
+				<section class="fl">
+					<div class="single">
+						<article class="single-post single-page">
+							<header class="single-title">
+								<h1><a id="page_title"></a></h1>
+							</header>
+							<div id="page_body" class="single-entry"></div>
+							<div class="end-line"><i></i><span>The End</span><i></i></div>
+							<div class="single-notice"></div>
+						</article>
+					</div>
+				</section>
+
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container footer_container">
+				<div class="footer_main clearfix">
+					<div id="footer" class="footer_links fl">
+						<a rel="nofollow" href="/page.html" target="_blank">免责声明</a>
+					</div>
+				</div>
+				<div class="footer_bottom">
+					<p class="foot-text foot-top left2">
+						Copyright ©<a id="web_title_end">{标题}</a>版权所有
+						<hr>
+						本站已安全运行<span id="iday"></span>天
+						<script>
+							function siteRun(d) {
+								var nowD = new Date();
+								return parseInt((nowD.getTime() - Date.parse(d)) / 24 / 60 / 60 / 1000)
+							}
+							document.getElementById("iday").innerHTML = siteRun("2023/07/11");
+						</script>
+					</p>
+				</div>
+			</div>
+			<div id="backtop" class="backtop">
+				<div class="bt-box top"><i class="fa fa-angle-up fa-2x"></i></div>
+				<div class="bt-box bt_night"><a title="夜间模式" class="at-night" href="javascript:switchNightMode()"
+						target="_self"><i class="fa fa-moon-o fa-2x"></i></a></div>
+				<div class="bt-box bottom"><i class="fa fa-angle-down fa-2x"></i></div>
+			</div>
+		</footer>
+		<div class="pjax_loading"></div>
+		<div class="none">
+			<script src="./access/custom.js"></script>
+			<script src="./access/zh_tw.js"></script>
+			<script src="./access/home.js"></script>
+			<script>
+				page_base64 = new Base64();
+				$("#page_title").text(page_base64.decode(page_title));
+				$("#page_body").html(page_base64.decode(page_body));
+			</script>
+		</div>
+	</body>
+</html>
