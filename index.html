@@ -1,23 +1,244 @@
 <html>
-<head><title>陌斯</title></head>
-<body>
-<center>
-<br><br>
-  <hr>
-<h1>Hello <div id="add_wz_a_gg_text"></div> </h1>
-  <hr>
-</center>
-</body>
-<script>
-let  add_a_gg_text_js= {
-        "陌斯":"?",
-}
-let  add_a_gg_text_js_html;
-for(let add_a_gg_text_js_key in add_a_gg_text_js) {
-add_a_gg_text_js_html = '<a href="'+add_a_gg_text_js[add_a_gg_text_js_key]+'">'+add_a_gg_text_js_key+'</a>';
-}
-if(add_a_gg_text_js_html!=undefined){
-document.getElementById("add_wz_a_gg_text").innerHTML = add_a_gg_text_js_html;
-}
-</script>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+		<meta name="applicable-device" content="pc,mobile">
+		<meta name="renderer" content="webkit" />
+		<meta name="force-rendering" content="webkit" />
+		<meta http-equiv="Cache-Control" content="no-transform" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>{标题}</title>
+		<meta name="description" content="{描述}" />
+		<meta name="keywords" content="{关键词}" />
+		<meta property="og:type" content="index" /><!-- index/article/book/movie -->
+		<meta property="og:title" content="{标题}" />
+		<meta property="og:site_name" content="{标题}">
+		<meta property="og:description" content="{描述}" />
+		<script src="./access/jquery-2.2.4.min.js"></script>
+		<script src="./access/blog.js"></script>
+		<script src="./access/swiper.min.js"></script>
+		<link href="./access/swiper.min.css" type="text/css" media="all" rel="stylesheet" rev="stylesheet" />
+		<link href="./access/animate.css" type="text/css" media="all" rel="stylesheet" />
+		<link href="./access/font-awesome.min.css" rel="stylesheet">
+		<link href="./access/style.css" type="text/css" media="all" rel="stylesheet" />
+	</head>
+	<body class="home-index">
+		<div id="percentageCounter"></div>
+		<div id="pjax_on">
+			<header id="header_main">
+				<div id="header">
+					<section class="container">
+						<h1 class="logo">
+							<a href="/" title="VPSGUO" rel="home"><strong>VPSGUO</strong><b class="shan"></b></a>
+						</h1>
+						<div class="nav-login"></div>
+						<div class="search_top">
+							<a title="繁简转换" class="top-tnrt" href="javascript:translatePage();" id="zh_tw">繁体</a>
+							<a href="javascript:;" title="点击搜索"><i class="fa fa-search"></i></a>
+							<div class="top_search ">
+								<form method="post" name="search"
+									action="https://www.vpsguo.com/zb_system/cmd.php?act=search" class="searchform">
+									<input type="text" name="q" placeholder="输入关键字..." class="text">
+									<input type="submit" class="btn" value="搜索">
+								</form>
+							</div>
+						</div>
+						<nav class="menu-nav">
+							<div class="nav-sjlogo">
+								<i class="nav-bar"><span></span><span></span><span></span></i>
+							</div>
+							<div id="monavber" class="header-nav" data-type="index" data-infoid="index">
+								<aside class="mobile_aside mobile_nav">
+									<div class="mobile-menu">
+										<ul id="nav" class="nav-pills navbar">
+											<li class="navbar-item "><a href="https://www.vpsguo.com/" title=""><i
+														class="icon font-home"></i>首页</a></li>
+											<li class="navbar-item "><a href="https://www.vpsguo.com/?cate=2"
+													title=""><i class="icon font-yunfuwuqi"></i>VPS优惠</a></li>
+											<li class="navbar-item "><a href="https://www.vpsguo.com/?cate=3"
+													title=""><i class="icon font-yunfuwuqi"></i>VPS测评</a></li>
+											<li class="navbar-item "><a href="https://www.vpsguo.com/?cate=4"
+													title=""><i class="icon font-cdn"></i>CDN</a></li>
+											<li class="navbar-item "><a href="https://www.vpsguo.com/?cate=5"
+													title=""><i
+														class="icon font-zixunguanlizixunfuwuguanli"></i>好文分享</a></li>
+											<li class="navbar-item "><a href="https://www.vpsguo.com/?cate=6"
+													title=""><i
+														class="icon font-zixunguanlizixunfuwuguanli"></i>资源分享</a></li>
+										</ul>
+									</div>
+								</aside>
+							</div>
+						</nav>
+					</section>
+				</div>
+			</header>
+			<div class="slide-wrap container clearfix">
+				<div class="main fl">
+					<div class="side-hot">
+						<div id="postlist" class="home-main index-page"><!--页面主体信息-->
+							<article class="post-list leftpic wow fadeInDown" id="list1">
+								<div class="post-pic">
+									<a class="post-cat post-top" href="/" target="_blank">置顶</a>
+									<a class="post-link" href="https://www.vpsguo.com/post/12.html" target="_blank">
+										<img class="lazy"
+											src="https://iuwuo.net/zb_users/upload/2023/05/20230512205732168389625262099.png"
+											alt="旅途云 - 新品上架特惠E5- 2699V4*2 CPU 绍兴BGP高防 4核 4G 20M 100G防御 220/元/月独家金盾清洗设备">
+									</a>
+								</div>
+								<div class="post-info">
+									<h2><a href="https://www.vpsguo.com/post/12.html" target="_blank">旅途云 - 新品上架特惠E5-
+											2699V4*2 CPU 绍兴BGP高防 4核 4G 20M 100G防御 220/元/月独家金盾清洗设备</a></h2>
+									<div class="info-desc">
+										商家介绍:公司成立于2019年，是国内领先的互联网业务平台服务提供商。公司专注为用户提供低价高性能云计算产品，致力于云计算应用的易用性开...</div>
+								</div>
+								<div class="onetop"></div>
+							</article>
+							<article class="post-list leftpic wow fadeInDown" id="list2">
+								<div class="post-pic">
+									<a class="post-cat" href="https://www.vpsguo.com/category-3.html"
+										target="_blank">VPS测评</a>
+									<a class="post-link" href="https://www.vpsguo.com/post/17.html" target="_blank">
+										<img class="lazy"
+											src="https://www.vpsguo.com/zb_users/upload/2023/07/202307071688742150580366.png"
+											alt="御速云：高防物理机清库存活动，40核64G内存，采用E5-V4中央处理器和DDR4内存，宽带为G口接入，100M带宽仅售599元/月，数量有限，先到先得！">
+									</a>
+								</div>
+								<div class="post-info">
+									<h2><a href="https://www.vpsguo.com/post/17.html"
+											target="_blank">御速云：高防物理机清库存活动，40核64G内存，采用E5-V4中央处理器和DDR4内存，宽带为G口接入，100M带宽仅售599元/月，数量有限，先到先得！</a>
+									</h2>
+									<div class="info-desc">御速云...</div>
+								</div>
+							</article>
+							<article class="post-list leftpic wow fadeInDown" id="list3">
+								<div class="post-pic">
+									<a class="post-cat" href="https://www.vpsguo.com/category-2.html"
+										target="_blank">VPS优惠</a>
+									<a class="post-link" href="https://www.vpsguo.com/post/16.html" target="_blank">
+										<img class="lazy"
+											src="https://www.vpsguo.com/zb_users/upload/2023/07/202307071688741760582598.png"
+											alt="御速云：香港CTG/CN2三网直连低至25元/月，四川成都高防云服务器低至109元/月（防御120G-600G），华东三线BGP普防云低至99元/月！">
+									</a>
+								</div>
+								<div class="post-info">
+									<h2><a href="https://www.vpsguo.com/post/16.html"
+											target="_blank">御速云：香港CTG/CN2三网直连低至25元/月，四川成都高防云服务器低至109元/月（防御120G-600G），华东三线BGP普防云低至99元/月！</a>
+									</h2>
+									<div class="info-desc">...</div>
+								</div>
+							</article>
+							<article class="post-list leftpic wow fadeInDown" id="list4">
+								<div class="post-pic">
+									<a class="post-cat" href="https://www.vpsguo.com/category-2.html"
+										target="_blank">VPS优惠</a>
+									<a class="post-link" href="https://www.vpsguo.com/post/15.html" target="_blank">
+										<img class="lazy"
+											src="https://www.vpsguo.com/zb_users/upload/2023/07/202307041688479426563685.png"
+											alt="明日云：宿迁联通150G高防云，49元/月起，金牌Platinum 8124M 系列CPU，Steam/高频游戏服务器优选"> </a>
+								</div>
+								<div class="post-info">
+									<h2><a href="https://www.vpsguo.com/post/15.html" target="_blank"><span
+												class="recommend-flag"
+												title="推荐文章">推荐</span>明日云：宿迁联通150G高防云，49元/月起，金牌Platinum 8124M
+											系列CPU，Steam/高频游戏服务器优选</a></h2>
+									<div class="info-desc">
+										明日云是一家成立于2015年的企业，明日云持有《中华人民共和国增值电信业务经营许可证》号：ISP证书、IDC证、云牌照和CDN证书:B1...</div>
+								</div>
+							</article>
+							<article class="post-list leftpic wow fadeInDown" id="list5">
+								<div class="post-pic">
+									<a class="post-cat" href="https://www.vpsguo.com/category-2.html"
+										target="_blank">VPS优惠</a>
+									<a class="post-link" href="https://www.vpsguo.com/post/14.html" target="_blank">
+										<img class="lazy"
+											src="https://www.vpsguo.com/zb_users/upload/2023/07/202307041688465693457187.png"
+											alt="云鹤数据：宿迁折扣后仅需60元/月，香港最低9.9元"> </a>
+								</div>
+								<div class="post-info">
+									<h2><a href="https://www.vpsguo.com/post/14.html"
+											target="_blank">云鹤数据：宿迁折扣后仅需60元/月，香港最低9.9元</a></h2>
+									<div class="info-desc">云鹤数据怎么样？云鹤数据好不好？云鹤数据(...</div>
+								</div>
+							</article>
+							<article class="post-list leftpic wow fadeInDown" id="list6">
+								<div class="post-pic">
+									<a class="post-cat" href="https://www.vpsguo.com/category-6.html"
+										target="_blank">资源分享</a>
+									<a class="post-link" href="https://www.vpsguo.com/post/13.html" target="_blank">
+										<img class="lazy"
+											src="https://www.vpsguo.com/zb_users/upload/2023/07/202307041688450380441099.png"
+											alt="魔方财务新版微信小程序发售中！！！"> </a>
+								</div>
+								<div class="post-info">
+									<h2><a href="https://www.vpsguo.com/post/13.html" target="_blank"><span
+												class="recommend-flag" title="推荐文章">推荐</span>魔方财务新版微信小程序发售中！！！</a></h2>
+									<div class="info-desc">前言&nbsp; &nbsp; &nbsp;
+										&nbsp;大家好！博主为大家分享一款魔方财务的微信小程序，小程序内功能齐全,UI精美，支...</div>
+								</div>
+							</article>
+							<article class="post-list leftpic wow fadeInDown" id="list7">
+								<div class="post-pic">
+									<a class="post-cat" href="https://www.vpsguo.com/category-2.html"
+										target="_blank">VPS优惠</a>
+									<a class="post-link" href="https://www.vpsguo.com/post/11.html" target="_blank">
+										<img class="lazy"
+											src="https://iuwuo.net/zb_users/upload/2023/04/202304121681302656845150.png"
+											alt="迈速云超值优惠！美国年付T防仅需199元！物理机7折！"> </a>
+								</div>
+								<div class="post-info">
+									<h2><a href="https://www.vpsguo.com/post/11.html"
+											target="_blank">迈速云超值优惠！美国年付T防仅需199元！物理机7折！</a></h2>
+									<div class="info-desc">
+										迈速云怎么样?迈速云服务器好不好？迈速云服务器靠不靠谱？迈速云（www.maisuyun.com）成立于2022年2月份，现由天津迈速科...</div>
+								</div>
+							</article>
+						</div>
+						<footer class="pagination wow fadeInDown">
+							<ul>
+								<li class="active"><span>1</span></li>
+								<li><span>共 1 页</span></li>
+							</ul>
+						</footer>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container footer_container">
+				<div class="footer_main clearfix">
+					<div class="footer_links fl">
+						<a rel="nofollow" href="https://www.vpsguo.com/3.html" target="_blank">关于本站</a><a rel="nofollow"
+							href="https://www.vpsguo.com/4.html" target="_blank">免责声明</a>
+					</div>
+				</div>
+				<div class="footer_bottom">
+					<p class="foot-text foot-top left2">
+						Copyright © <a id="web_title_end" href="/">{标题}</a>版权所有
+						<hr>
+						本站已安全运行<span id="iday"></span>天 
+						<script>
+							function siteRun(d) {
+								var nowD = new Date();
+								return parseInt((nowD.getTime() - Date.parse(d)) / 24 / 60 / 60 / 1000)
+							}
+							document.getElementById("iday").innerHTML = siteRun("2023/07/11");
+						</script>
+					</p>
+				</div>
+			</div>
+			<div id="backtop" class="backtop">
+				<div class="bt-box top"><i class="fa fa-angle-up fa-2x"></i></div>
+				<div class="bt-box bt_night"><a title="夜间模式" class="at-night" href="javascript:switchNightMode()"
+						target="_self"><i class="fa fa-moon-o fa-2x"></i></a></div>
+				<div class="bt-box bottom"><i class="fa fa-angle-down fa-2x"></i></div>
+			</div>
+		</footer>
+		<div class="pjax_loading"></div>
+		<div class="none">
+			<script src="https://www.vpsguo.com/zb_users/theme/onelee/script/custom.js?v=2023-07-05"></script>
+			<script src="https://www.vpsguo.com/zb_users/theme/onelee/script/zh_tw.js"></script>
+		</div>
+	</body>
 </html>
