@@ -43,7 +43,6 @@ function addNumber(a) {
 }
 if ($('#comment-tools,.msgarticle,.comment-content').length) {
 	objActive = "txaArticle";
-
 	function InsertText(a, b, c) {
 		if (b == "") {
 			return ("")
@@ -67,7 +66,6 @@ if ($('#comment-tools,.msgarticle,.comment-content').length) {
 			}
 		}
 	}
-
 	function ReplaceText(a, b, c) {
 		var d = document.getElementById(a);
 		var e;
@@ -136,14 +134,12 @@ jQuery(document).ready(function($) {
 	var p = $('.listree-list');
 	if (p.length < 1) return;
 	var arr = [];
-
 	function part_offset_top() {
 		p.each(function() {
 			var of = $(this).offset();
 			arr.push(Math.floor(of.top))
 		})
 	}
-
 	function goto_current(index) {
 		var a = $('#listree-ol li');
 		var b = $('.listree-list');
@@ -157,7 +153,6 @@ jQuery(document).ready(function($) {
 			}, 50)
 		}
 	}
-
 	function window_scroll() {
 		var st = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 		var limit = Math.ceil(st + 20);
@@ -196,7 +191,6 @@ jQuery(document).ready(function($) {
 		options.additionalMarginTop = parseInt(options.additionalMarginTop) || 0;
 		options.additionalMarginBottom = parseInt(options.additionalMarginBottom) || 0;
 		tryInitOrHookIntoEvents(options, this);
-
 		function tryInitOrHookIntoEvents(options, $that) {
 			var success = tryInit(options, $that);
 			if (!success) {
@@ -219,7 +213,6 @@ jQuery(document).ready(function($) {
 				}(options, $that))
 			}
 		}
-
 		function tryInit(options, $that) {
 			if (options.initialized === true) {
 				return true
@@ -230,7 +223,6 @@ jQuery(document).ready(function($) {
 			init(options, $that);
 			return true
 		}
-
 		function init(options, $that) {
 			options.initialized = true;
 			$('head').append($(
@@ -406,7 +398,6 @@ jQuery(document).ready(function($) {
 						o.onScroll(o)
 					}
 				}(o));
-
 				function resetSidebar() {
 					o.fixedScrollTop = 0;
 					o.sidebar.css({
@@ -417,7 +408,6 @@ jQuery(document).ready(function($) {
 						'width': ''
 					})
 				}
-
 				function getClearedHeight(e) {
 					var height = e.height();
 					e.children().each(function() {
