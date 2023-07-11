@@ -687,8 +687,6 @@ jQuery(window).bind('scroll',
 			$('.cat_bg_img').css('background-position', '50% -' + scrollTop * paralasicValue + 'px');
 		});
 	});
-//控制台输出版权
-console.log("\n %c 轻量博客程序 %c MsBlog \n\n", "color: #fadfa3; background: #030307; padding:5px 0;", "color:black;background: #fadfa3; padding:5px 0;");
 /*jQuery(window).bind('scroll',function() {
 	$(window).scroll(function() {
         var scrollTop = $(window).scrollTop() / 2;

@@ -1,3 +1,5 @@
+//控制台输出版权
+console.log("\n %c 轻量个人博客 %c "+page_http_get_configs['title']+" \n\n", "color: #fadfa3; background: #030307; padding:5px 0;", "color:black;background: #fadfa3; padding:5px 0;");
 //加载网站信息
 $("title").text(page_http_get_configs['title']+" - "+page_http_get_configs['titles']);
 $('meta[name="description"]')[0].content=page_http_get_configs['description'];
