@@ -10,7 +10,18 @@
 		<meta http-equiv="Cache-Control" content="no-transform" />
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
 		<script>
-			var page_article_id = "page";
+			function GetQueryString(name) {
+			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			    var r = window.location.search.substr(1).match(reg);
+			    if (r != null)
+			        return unescape(r[2]);
+			    return undefined;
+			}
+			var page_article_id = GetQueryString("page");
+			if(page_article_id==undefined){
+				alert("文章不存在");
+				location.href="./index.html";
+			}
 			let page_http_get_configs;
 			const page_http_get_config = new XMLHttpRequest();
 			const page_http_get_config_url = './config/config';
@@ -59,7 +70,7 @@
 				<div id="header">
 					<section class="container">
 						<h1 class="logo">
-							<a id="logo_title" href="/" title="{标题}" rel="home"><strong id="logo_titles">{标题}</strong><b
+							<a id="logo_title" href="./index.html" title="{标题}" rel="home"><strong id="logo_titles">{标题}</strong><b
 									class="shan"></b></a>
 						</h1>
 						<div class="nav-login"></div>
