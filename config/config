@@ -8,12 +8,12 @@
 	"menu":{
 		"首页":"./index.html",
 		"更多":"./index.html",
-		"备注":"导航菜单栏[name:url]"
+		"备注":"导航菜单栏（name:url）"
 	},
 	"footer":{
-	"免责声明":"./page.html?page=page",	
-	"官方电报群":"//t.me/yuanhaiziyuan",
-	"备注":"网页页脚超链"
+		"免责声明":"./page.html?page=page",	
+		"官方电报群":"//t.me/yuanhaiziyuan",
+		"备注":"网页页脚超链"
 	},
 	"备注":"网站信息配置"
 }
