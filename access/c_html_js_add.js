@@ -37,3 +37,12 @@ $(function() {
 	});
 	Prism.highlightAll()
 });
+function openNewWindow(strUrl="/"){
+	let a = document.createElement("a");
+	document.body.appendChild(a);
+	a.style = "display: none";
+	a.target = "_blank";
+	a.href = strUrl;
+	a.click();
+	document.body.removeChild(a);
+}
