@@ -231,15 +231,21 @@
 							<a title="繁简转换" class="top-tnrt" href="javascript:translatePage();" id="zh_tw">繁体</a>
 							<a href="javascript:;" title="点击搜索"><i class="fa fa-search"></i></a>
 							<div class="top_search ">
-								<form method="get" name="search" action="#" class="searchform">
-									<input type="text" placeholder="输入关键字..." class="text">
+									<input type="text" id="search_text" placeholder="输入关键字..." class="text">
 									<input type="submit" class="btn" value="搜索" onclick="com_search();">
-								</form>
 							</div>
 						</div>
 						<nav class="menu-nav">
 							<div class="nav-sjlogo">
 								<i class="nav-bar"><span></span><span></span><span></span></i>
+							</div>
+							<div class="nav-sousuo">
+								<div class="mini_search">
+										<input class="searchInput" type="text" id="m_search_text" placeholder="请输入搜索内容..." >
+										<button type="submit" class="btn-search dtb2" value="" onclick="com_m_search();"><i class="fa fa-search"></i></button>
+								</div>
+								<a title="点击搜索" id="mo-so" href="javascript:;"><i class="fa fa-search icon-search"></i></a>
+								<a title="繁简转换" class="top-tnrt" href="javascript:translatePage();" id="zh_tw">繁体</a>
 							</div>
 							<div id="monavber" class="header-nav" data-type="index" data-infoid="index">
 								<aside class="mobile_aside mobile_nav">

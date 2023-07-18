@@ -23,10 +23,20 @@ for(let site_footer_web_key in page_http_get_configs['footer']) {
 	if(site_footer_web_html==undefined)site_footer_web_html="";if(page_http_get_configs['footer'][site_footer_web_key]!=undefined&&site_footer_web_key!="备注")site_footer_web_html = site_footer_web_html+'<a href="'+page_http_get_configs['footer'][site_footer_web_key]+'"><i class="icon font-home"></i>'+site_footer_web_key+'</a>';
 }if(site_footer_web_html!=undefined)$("#footer").html(site_footer_web_html+"</ul>");
 //搜索功能
-function com_search(){
-	alert("搜索功能还没写");
+function com_search(s=$("#search_text").val()){
+	if(s==""||s==undefined){
+		alert("搜索内容不得为空");
+		return 0;
+	}
+	openNewWindow("./search.html?search="+s);
 }
-
+function com_m_search(s=$("#m_search_text").val()){
+	if(s==""||s==undefined){
+		alert("搜索内容不得为空");
+		return 0;
+	}
+	openNewWindow("./search.html?search="+s);
+}
 
 //隐藏加载页
 $("#load_page").hide();
