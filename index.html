@@ -311,6 +311,7 @@
 		<div class="none">
 			<script src="./access/custom.js"></script>
 			<script src="./access/zh_tw.js"></script>
+			<script src="./config/article_list/0"></script>
 			<script>
 				//引用base64
 				page_base64 = new Base64();
@@ -357,13 +358,13 @@
 				//加载文章列表页码数
 				let pagelist_number='<ul>';
 				var pagelist_i;
-				for (pagelist_i = 1; pagelist_i <= parseInt(page_http_get_configs['pagelist_number']); pagelist_i++) {
-					if(parseInt(page_articlelist_num)==pagelist_i){
+				for (pagelist_i = 1; pagelist_i <= pagelist_numbers; pagelist_i++) {
+					if(page_articlelist_num==pagelist_i){
 						pagelist_number = pagelist_number+'<ul><li class="active"><span>'+pagelist_i+'</span></li>';
 					}else{
 						pagelist_number = pagelist_number+'<ul><li><a href="?page='+pagelist_i+'">'+pagelist_i+'</a></li>';
 					}
-				}if(pagelist_number!='<ul>')$("#page_num_list").html(pagelist_number+"<li><span>共 "+page_http_get_configs['pagelist_number']+" 页</span></li></ul>");
+				}if(pagelist_number!='<ul>')$("#page_num_list").html(pagelist_number+"<li><span>共 "+pagelist_numbers+" 页</span></li></ul>");
 			</script>
 			<script src="./access/home.js"></script>
 		</div>
