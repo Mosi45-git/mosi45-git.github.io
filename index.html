@@ -59,7 +59,7 @@
 		<link href="./access/font-awesome.min.css" rel="stylesheet">
 		<link href="./access/style.css" type="text/css" media="all" rel="stylesheet" />
 		<script>
-		if(page_http_get_configs==undefined||page_http_toparticle_configs==undefined){
+		if(page_http_get_configs==undefined||page_http_toparticle_configs==undefined||page_http_articlelist_configs==undefined){
 			alert("网络不稳定，即将重新加载");
 			location.reload();
 		}
@@ -320,7 +320,7 @@
 					if(site_toparticle_web_html==undefined)site_toparticle_web_html="";
 					if(page_http_toparticle_configs[site_toparticle_web_key]!=undefined&&site_toparticle_web_key!="备注"){
 						site_toparticle_web_html = site_toparticle_web_html+'\
-							<article class="post-list leftpic wow fadeInDown" onclick="openNewWindow(\''+page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["url"])+'\');">\
+							<article class="post-list leftpic wow fadeInDown" onclick="openNewWindow(\'./page.html?page='+site_toparticle_web_key+'\');">\
 								<div class="post-pic">\
 									<a class="post-cat post-top"	target="_blank">置顶</a>\
 									<a class="post-link">\
@@ -335,16 +335,12 @@
 					}
 				}if(site_toparticle_web_html!=undefined)$("#page_article_topping").html(site_toparticle_web_html);
 				//加载文章列表
-				if(page_http_articlelist_configs==undefined){
-					alert("网络不稳定，即将重新加载");
-					location.reload();
-				}
 				let site_articlelist_web_html;
 				for(let site_articlelist_web_key in page_http_articlelist_configs) {
 					if(site_articlelist_web_html==undefined)site_articlelist_web_html="";
 					if(page_http_articlelist_configs[site_articlelist_web_key]!=undefined&&site_articlelist_web_key!="备注"){
 						site_articlelist_web_html = site_articlelist_web_html+'\
-							<article class="post-list leftpic wow fadeInDown" onclick="openNewWindow(\''+page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["url"])+'\');">\
+							<article class="post-list leftpic wow fadeInDown" onclick="openNewWindow(\'./page.html?page='+site_articlelist_web_key+'\');">\
 								<div class="post-pic">\
 									<a class="post-cat"	target="_blank">'+((page_http_articlelist_configs[site_articlelist_web_key]["type"])?page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["type"]):'未分类')+'</a>\
 									<a class="post-link">\
