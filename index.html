@@ -10,6 +10,15 @@
 		<meta http-equiv="Cache-Control" content="no-transform" />
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
 		<script>
+			function GetQueryString(name) {
+			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			    var r = window.location.search.substr(1).match(reg);
+			    if (r != null)
+			        return unescape(r[2]);
+			    return undefined;
+			}
+			var page_articlelist_num = GetQueryString("page");
+			if(page_articlelist_num==undefined||page_articlelist_num<=0){page_articlelist_num="1";}
 			let page_http_get_configs;
 			const page_http_get_config = new XMLHttpRequest();
 			const page_http_get_config_url = './config/config';
@@ -17,6 +26,22 @@
 			page_http_get_config.send();
 			page_http_get_config.onreadystatechange = (e) => {
 				page_http_get_configs = JSON.parse(page_http_get_config.responseText);
+			}
+			let page_http_toparticle_configs;
+			const page_http_toparticle_config = new XMLHttpRequest();
+			const page_http_toparticle_config_url = './config/article_topping';
+			page_http_toparticle_config.open("GET", page_http_toparticle_config_url);
+			page_http_toparticle_config.send();
+			page_http_toparticle_config.onreadystatechange = (e) => {
+				page_http_toparticle_configs = JSON.parse(page_http_toparticle_config.responseText);
+			}
+			let page_http_articlelist_configs;
+			const page_http_articlelist_config = new XMLHttpRequest();
+			const page_http_articlelist_config_url = './config/article_list/'+page_articlelist_num;
+			page_http_articlelist_config.open("GET", page_http_articlelist_config_url);
+			page_http_articlelist_config.send();
+			page_http_articlelist_config.onreadystatechange = (e) => {
+				page_http_articlelist_configs = JSON.parse(page_http_articlelist_config.responseText);
 			}
 		</script>
 		<title>{标题}</title>
@@ -34,13 +59,170 @@
 		<link href="./access/font-awesome.min.css" rel="stylesheet">
 		<link href="./access/style.css" type="text/css" media="all" rel="stylesheet" />
 		<script>
-		if(page_http_get_configs==undefined){
+		if(page_http_get_configs==undefined||page_http_toparticle_configs==undefined){
 			alert("网络不稳定，即将重新加载");
 			location.reload();
 		}
+		if(page_http_articlelist_configs==undefined){alert("错误的页码");location.href="./index.html";}
 		</script>
 	</head>
 	<body class="home-index">
+	<div id="load_page">
+		<style>
+			#load_section.loader {
+			  font-family: Consolas, monaco, monospace;
+			  position:absolute;
+			  top:0; left:0; right:0; bottom:0;
+			  background-color:#232427;
+			  
+			  color:#FF893A;
+			}
+			#load_section.loader .loader-center {
+			  width:300px;
+			  height:100px;
+			  line-height:100px;
+			  
+			  margin:0 auto;
+			  text-align:center;
+			  font-size:38px;
+			  letter-spacing:-6px;
+			  
+			  position:absolute;
+			  top:50%; left:50%;
+			  margin-left:-150px; margin-top:-50px;
+			  
+			}
+			#load_section.loader .loader-center .chars .dots .char {
+			  font-size:150%;
+			  display:inline-block;
+			}
+			.dots .dot {
+			  position:relative;
+			  top:0; left:0; 
+			}
+			.dot._dot-1 {
+			  animation:dot_1 1s ease-in-out infinite;
+			  animation-fill-mode: backwards;
+			  animation-direction: alternate;
+			}
+			.dot._dot-2 {
+			  animation:dot_2 1s ease-in-out infinite;
+			  animation-fill-mode: backwards;
+			  animation-direction: alternate;
+			  animation-delay:1s;
+			}
+			.dot._dot-3 {
+			  animation:dot_3 1s ease-in-out infinite;
+			  animation-fill-mode: backwards;
+			  animation-direction: alternate;
+			  animation-delay:0.5s;
+			}
+			@keyframes dot_1 {
+			  0% {
+				top:0;
+				left:0;
+			  }
+			  
+			  50% {
+				top:30px;
+				left:20px;
+			  }
+			  
+			  100% {
+				top:0px;
+				left:40px;
+			  }
+			}
+			@keyframes dot_2 {
+			  0% {
+				top:0;
+				left:0;
+			  }
+			  
+			  50% {
+				top:-30px;
+				left:20px;
+			  }
+			  
+			  100% {
+				top:0px;
+				left:40px;
+			  }
+			}
+			@keyframes dot_3 {
+			  0% {
+				top:0;
+				left:0;
+			  }
+			  
+			  50% {
+				top:-30px;
+				left:-40px;
+			  }
+			  
+			  100% {
+				top:0px;
+				left:-80px;
+			  }
+			}
+			#load_section .author {
+			  position:fixed;
+			  top:0; bottom:0;
+			  left:0px;
+			  
+			  font-size:80%;
+			  transform:rotate(-10deg) translate(50px, 20px);
+			  
+			  padding:5px 0;
+			  text-align:center;
+			  
+			  color:#eee;
+			  opacity:0.8;
+			}
+			#load_section .author a {
+			  color:#78ECB4;
+			  text-decoration:none;
+			}
+			#load_section .author a:hover {
+			  color:#60D69D;
+			}
+			.affiliate-container .the-text {
+			  background-color: rgba(0,0,0,0.5);
+			}
+			.affiliate-container {
+			  opacity: 0.6;
+			  position: absolute;
+			  right: -20px;
+			  top: 0px;
+			  transform: scale(.8);
+			  transition: 0.2s all ease-in-out;
+			  margin-top: 0;
+			  justify-content: flex-end;
+			}
+			.affiliate-container:hover {
+			  opacity: 0.8;
+			  transform: scale(1);
+			}
+		</style>
+		<section id="load_section" class='loader'>
+		  <div class='loader-center'>
+			<div class='chars'>
+			  <span class='char brace'>{</span>
+			  <span class='dots'>
+				<span class='char dot _dot-1'>.</span>
+				<span class='char dot _dot-2'>.</span>
+				<span class='char dot _dot-3'>.</span>
+			  </span>
+			  <span class='char brace'>}</span>
+			</div><br>
+			<center><p>网页加载中</p></center>
+		  </div>
+		</section>
+		<script>
+			$("title").text("网页加载中");
+		</script>
+	</div>
+	<div id="load_pages" style="display: none">
 		<div id="percentageCounter"></div>
 		<div id="pjax_on">
 			<header id="header_main">
@@ -84,42 +266,12 @@
 					<div class="side-hot">
 						<div id="postlist" class="home-main index-page"><!--页面主体信息-->
 						<div id="page_article_topping">
-							<article class="post-list leftpic wow fadeInDown" onclick="openNewWindow('./page.html?page=page');">
-								<div class="post-pic">
-									<a class="post-cat post-top">置顶</a>
-									<a class="post-link">
-										<img class="lazy" src="https://iuwuo.net/zb_users/upload/2023/05/20230512205732168389625262099.png">
-									</a>
-								</div>
-								<div class="post-info">
-									<h2><a>旅途云 - 新品上架特惠E5-
-											2699V4*2 CPU 绍兴BGP高防 4核 4G 20M 100G防御 220/元/月独家金盾清洗设备</a></h2>
-									<div class="info-desc">
-										商家介绍:公司成立于2019年，是国内领先的互联网业务平台服务提供商。公司专注为用户提供低价高性能云计算产品，致力于云计算应用的易用性开...</div>
-								</div>
-							</article>
 						</div>
 						<div id="page_article">
-							<article class="post-list leftpic wow fadeInDown" onclick="openNewWindow('./page.html?page=page');">
-								<div class="post-pic">
-									<a class="post-cat"	target="_blank">VPS优惠</a>
-									<a class="post-link">
-										<img class="lazy" src="https://www.vpsguo.com/zb_users/upload/2023/07/202307041688479426563685.png"> </a>
-								</div>
-								<div class="post-info">
-									<h2><a><span class="recommend-flag">推荐</span>明日云：宿迁联通150G高防云，49元/月起，金牌Platinum 8124M
-											系列CPU，Steam/高频游戏服务器优选</a></h2>
-									<div class="info-desc">
-										明日云是一家成立于2015年的企业，明日云持有《中华人民共和国增值电信业务经营许可证》号：ISP证书、IDC证、云牌照和CDN证书:B1...</div>
-								</div>
-							</article>
 						</div>
 						</div>
 						<footer class="pagination wow fadeInDown">
-							<ul>
-								<li class="active"><span>1</span></li>
-								<li><span>共 1 页</span></li>
-							</ul>
+							<div id="page_num_list"></div>
 						</footer>
 					</div>
 				</div>
@@ -142,7 +294,7 @@
 								var nowD = new Date();
 								return parseInt((nowD.getTime() - Date.parse(d)) / 24 / 60 / 60 / 1000)
 							}
-							document.getElementById("iday").innerHTML = siteRun("2023/07/11");
+							document.getElementById("iday").innerHTML = siteRun("2023/07/18");
 						</script>
 					</p>
 				</div>
@@ -154,10 +306,69 @@
 				<div class="bt-box bottom"><i class="fa fa-angle-down fa-2x"></i></div>
 			</div>
 		</footer>
+	</div>
 		<div class="pjax_loading"></div>
 		<div class="none">
 			<script src="./access/custom.js"></script>
 			<script src="./access/zh_tw.js"></script>
+			<script>
+				//引用base64
+				page_base64 = new Base64();
+				//加载置顶文章列表
+				let site_toparticle_web_html;
+				for(let site_toparticle_web_key in page_http_toparticle_configs) {
+					if(site_toparticle_web_html==undefined)site_toparticle_web_html="";
+					if(page_http_toparticle_configs[site_toparticle_web_key]!=undefined&&site_toparticle_web_key!="备注"){
+						site_toparticle_web_html = site_toparticle_web_html+'\
+							<article class="post-list leftpic wow fadeInDown" onclick="openNewWindow(\''+page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["url"])+'\');">\
+								<div class="post-pic">\
+									<a class="post-cat post-top"	target="_blank">置顶</a>\
+									<a class="post-link">\
+										<img class="lazy" src="'+page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["image"])+'"> </a>\
+								</div>\
+								<div class="post-info">\
+									<h2><a>'+((page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["flag"])=="true")?'<span class="recommend-flag">推荐</span>':'')+page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["title"])+'</a></h2>\
+									<div class="info-desc">'+page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["body"])+'</div>\
+								</div>\
+							</article>\
+							';
+					}
+				}if(site_toparticle_web_html!=undefined)$("#page_article_topping").html(site_toparticle_web_html);
+				//加载文章列表
+				if(page_http_articlelist_configs==undefined){
+					alert("网络不稳定，即将重新加载");
+					location.reload();
+				}
+				let site_articlelist_web_html;
+				for(let site_articlelist_web_key in page_http_articlelist_configs) {
+					if(site_articlelist_web_html==undefined)site_articlelist_web_html="";
+					if(page_http_articlelist_configs[site_articlelist_web_key]!=undefined&&site_articlelist_web_key!="备注"){
+						site_articlelist_web_html = site_articlelist_web_html+'\
+							<article class="post-list leftpic wow fadeInDown" onclick="openNewWindow(\''+page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["url"])+'\');">\
+								<div class="post-pic">\
+									<a class="post-cat"	target="_blank">'+((page_http_articlelist_configs[site_articlelist_web_key]["type"])?page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["type"]):'未分类')+'</a>\
+									<a class="post-link">\
+										<img class="lazy" src="'+page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["image"])+'"> </a>\
+								</div>\
+								<div class="post-info">\
+									<h2><a>'+((page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["flag"])=="true")?'<span class="recommend-flag">推荐</span>':'')+page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["title"])+'</a></h2>\
+									<div class="info-desc">'+page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["body"])+'</div>\
+								</div>\
+							</article>\
+							';
+					}
+				}if(site_articlelist_web_html!=undefined)$("#page_article").html(site_articlelist_web_html);
+				//加载文章列表页码数
+				let pagelist_number='<ul>';
+				var pagelist_i;
+				for (pagelist_i = 1; pagelist_i <= parseInt(page_http_get_configs['pagelist_number']); pagelist_i++) {
+					if(parseInt(page_articlelist_num)==pagelist_i){
+						pagelist_number = pagelist_number+'<ul><li class="active"><span>'+pagelist_i+'</span></li>';
+					}else{
+						pagelist_number = pagelist_number+'<ul><li><a href="?page='+pagelist_i+'">'+pagelist_i+'</a></li>';
+					}
+				}if(pagelist_number!='<ul>')$("#page_num_list").html(pagelist_number+"<li><span>共 "+page_http_get_configs['pagelist_number']+" 页</span></li></ul>");
+			</script>
 			<script src="./access/home.js"></script>
 		</div>
 	</body>

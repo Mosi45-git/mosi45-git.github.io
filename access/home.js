@@ -26,3 +26,9 @@ for(let site_footer_web_key in page_http_get_configs['footer']) {
 function com_search(){
 	alert("搜索功能还没写");
 }
+
+
+//隐藏加载页
+$("#load_page").hide();
+//展示网页内容
+$("#load_pages").css("display","block");
