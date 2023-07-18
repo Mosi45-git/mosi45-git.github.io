@@ -30,14 +30,13 @@ function com_search(s=$("#search_text").val()){
 	}
 	openNewWindow("./search.html?search="+s);
 }
-function com_m_search(s=$("#m_search_text").val()){
+function com_m_search(s=$("#ls").val()){
 	if(s==""||s==undefined){
 		alert("搜索内容不得为空");
 		return 0;
 	}
 	openNewWindow("./search.html?search="+s);
 }
-
 //隐藏加载页
 $("#load_page").hide();
 //展示网页内容
