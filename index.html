@@ -325,11 +325,11 @@
 								<div class="post-pic">\
 									<a class="post-cat post-top"	target="_blank">置顶</a>\
 									<a class="post-link">\
-										<img class="lazy" src="'+page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["image"])+'"> </a>\
+										<img class="lazy" src="'+((page_http_toparticle_configs[site_toparticle_web_key]["image"])?page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["image"]):"./access/images/00.jpg")+'"> </a>\
 								</div>\
 								<div class="post-info">\
-									<h2><a>'+((page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["flag"])=="true")?'<span class="recommend-flag">推荐</span>':'')+page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["title"])+'</a></h2>\
-									<div class="info-desc">'+page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["body"])+'</div>\
+									<h2><a>'+((page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["flag"])=="true")?'<span class="recommend-flag">推荐</span>':'')+((page_http_toparticle_configs[site_toparticle_web_key]["title"])?page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["title"]):"此文章无标题")+'</a></h2>\
+									<div class="info-desc">'+((page_http_toparticle_configs[site_toparticle_web_key]["body"])?page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["body"]):"此文章无简介")+'</div>\
 								</div>\
 							</article>\
 							';
@@ -345,11 +345,11 @@
 								<div class="post-pic">\
 									<a class="post-cat"	target="_blank">'+((page_http_articlelist_configs[site_articlelist_web_key]["type"])?page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["type"]):'未分类')+'</a>\
 									<a class="post-link">\
-										<img class="lazy" src="'+page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["image"])+'"> </a>\
+										<img class="lazy" src="'+((page_http_articlelist_configs[site_articlelist_web_key]["image"])?page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["image"]):'./access/images/00.jpg')+'"> </a>\
 								</div>\
 								<div class="post-info">\
-									<h2><a>'+((page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["flag"])=="true")?'<span class="recommend-flag">推荐</span>':'')+page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["title"])+'</a></h2>\
-									<div class="info-desc">'+page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["body"])+'</div>\
+									<h2><a>'+((page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["flag"])=="true")?'<span class="recommend-flag">推荐</span>':'')+((page_http_articlelist_configs[site_articlelist_web_key]["title"])?page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["title"]):"此文章无标题")+'</a></h2>\
+									<div class="info-desc">'+((page_http_articlelist_configs[site_articlelist_web_key]["body"])?page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["body"]):"此文章无简介")+'</div>\
 								</div>\
 							</article>\
 							';
