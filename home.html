@@ -1,0 +1,84 @@
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Love</title>
+     <script>(function(){if(/Android/i.test(navigator.userAgent)){var a=720,b=window.innerWidth||a,c=window.outerHeight||b,d=window.screen.width||b,e=window.screen.availWidth||b,g=window.innerHeight||a,h=window.outerHeight||g,i=window.screen.height||g,j=window.screen.availHeight||g,k=Math.min(b,c,d,e,g,h,i,j),l=k/a,m=window.devicePixelRatio,l=Math.min(l,m),viewport='<meta name="viewport" content="width='+a;l<1&&(viewport+=",initial-scale="+l+",maximum-scale="+l),viewport+='">',document.write(viewport)}else document.write('<meta name="viewport" content="width=720, user-scalable=no, target-densitydpi=device-dpi">');})()</script>
+    <script
+      id="jqbb"
+      src="https://libs.baidu.com/jquery/1.11.1/jquery.min.js"
+    ></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: black;
+        user-select: none;
+        margin: 0;
+      }
+
+      .city {
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        z-index: 100;
+      }
+
+      .city img {
+        width: 100%;
+      }
+
+      audio {
+        opacity: 0;
+      }
+    </style>
+    <title>Love</title>
+    <!-- 弹窗样式 -->
+    <link href="modal.css" rel="stylesheet" />
+  </head>
+
+  <body onselectstart="return false">
+    <div class="star comet"></div>
+    <script src="js/index.js"></script>
+
+    <!--对话部分-->
+    <div class="share_img"><img src="img/xin.png" alt="" /></div>
+    <div class="page_one">
+      <div class="content">
+        <div class="text_wrapper">
+          <img class="xin" src="img/xin.png" alt="" />
+          <div class="text">小姐姐，我好喜欢你，你愿意做我女朋友吗？</div>
+        </div>
+      </div>
+      <hr>
+      <div class="btn-groups">
+        <div class="heart-btn">
+          <div id="yes" class="btn btn-a"><span>愿意</span></div>
+        </div>
+        <div id="no" class="btn btn-b"><span>不愿意</span></div>
+      </div>
+    </div>
+    <!--烟花部分-->
+    <canvas id="cas" style="background-color: rgba(0, 5, 24, 1); z-index: 9999">
+      浏览器不支持canvas
+    </canvas>
+    <div class="city">
+      <img src="img/city.png" alt="" />
+    </div>
+    <img src="img/moon.png" alt="" id="moon" style="visibility: hidden" />
+    <div style="display: none">
+      <div class="shape">相遇是缘</div>
+      <div class="shape">茫茫人海</div>
+      <div class="shape">怦然心动</div>
+      <div class="shape">苏静雯</div>
+      <div class="shape">520❤</div>
+      <div class="shape">深情与你</div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="fire.js"></script>
+    <script src="talk.js"></script>
+  </body>
+</html>

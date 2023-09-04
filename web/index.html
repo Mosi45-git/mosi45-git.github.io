@@ -1,0 +1,377 @@
+<html xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+		<meta name="applicable-device" content="pc,mobile">
+		<meta name="renderer" content="webkit" />
+		<meta name="force-rendering" content="webkit" />
+		<meta http-equiv="Cache-Control" content="no-transform" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<script>
+			function GetQueryString(name) {
+			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			    var r = window.location.search.substr(1).match(reg);
+			    if (r != null)
+			        return unescape(r[2]);
+			    return undefined;
+			}
+			var page_articlelist_num = GetQueryString("page");
+			if(page_articlelist_num==undefined||page_articlelist_num<=0){page_articlelist_num="1";}
+			let page_http_get_configs;
+			const page_http_get_config = new XMLHttpRequest();
+			const page_http_get_config_url = './config/config';
+			page_http_get_config.open("GET", page_http_get_config_url);
+			page_http_get_config.send();
+			page_http_get_config.onreadystatechange = (e) => {
+				page_http_get_configs = JSON.parse(page_http_get_config.responseText);
+			}
+			let page_http_toparticle_configs;
+			const page_http_toparticle_config = new XMLHttpRequest();
+			const page_http_toparticle_config_url = './config/article_topping';
+			page_http_toparticle_config.open("GET", page_http_toparticle_config_url);
+			page_http_toparticle_config.send();
+			page_http_toparticle_config.onreadystatechange = (e) => {
+				page_http_toparticle_configs = JSON.parse(page_http_toparticle_config.responseText);
+			}
+			let page_http_articlelist_configs;
+			const page_http_articlelist_config = new XMLHttpRequest();
+			const page_http_articlelist_config_url = './config/article_list/'+page_articlelist_num;
+			page_http_articlelist_config.open("GET", page_http_articlelist_config_url);
+			page_http_articlelist_config.send();
+			page_http_articlelist_config.onreadystatechange = (e) => {
+				page_http_articlelist_configs = JSON.parse(page_http_articlelist_config.responseText);
+			}
+		</script>
+		<title>{标题}</title>
+		<meta name="description" content="{描述}" />
+		<meta name="keywords" content="{关键词}" />
+		<meta property="og:type" content="{网页类型}" /><!-- index/article/book/movie -->
+		<meta property="og:title" content="{标题}" />
+		<meta property="og:site_name" content="{标题}">
+		<meta property="og:description" content="{描述}" />
+		<script src="./access/jquery-2.2.4.min.js"></script>
+		<script src="./access/c_html_js_add.js"></script>
+		<script src="./access/swiper.min.js"></script>
+		<link href="./access/swiper.min.css" type="text/css" media="all" rel="stylesheet" rev="stylesheet" />
+		<link href="./access/animate.css" type="text/css" media="all" rel="stylesheet" />
+		<link href="./access/font-awesome.min.css" rel="stylesheet">
+		<link href="./access/style.css" type="text/css" media="all" rel="stylesheet" />
+		<script>
+		if(page_http_get_configs==undefined||page_http_toparticle_configs==undefined||page_http_articlelist_configs==undefined){
+			alert("网络不稳定，即将重新加载");
+			location.reload();
+		}
+		if(page_http_articlelist_configs==undefined){alert("错误的页码");location.href="./index.html";}
+		</script>
+	</head>
+	<body class="home-index">
+	<div id="load_page">
+		<style>
+			#load_section.loader {
+			  font-family: Consolas, monaco, monospace;
+			  position:absolute;
+			  top:0; left:0; right:0; bottom:0;
+			  background-color:#232427;
+			  
+			  color:#FF893A;
+			}
+			#load_section.loader .loader-center {
+			  width:300px;
+			  height:100px;
+			  line-height:100px;
+			  
+			  margin:0 auto;
+			  text-align:center;
+			  font-size:38px;
+			  letter-spacing:-6px;
+			  
+			  position:absolute;
+			  top:50%; left:50%;
+			  margin-left:-150px; margin-top:-50px;
+			  
+			}
+			#load_section.loader .loader-center .chars .dots .char {
+			  font-size:150%;
+			  display:inline-block;
+			}
+			.dots .dot {
+			  position:relative;
+			  top:0; left:0; 
+			}
+			.dot._dot-1 {
+			  animation:dot_1 1s ease-in-out infinite;
+			  animation-fill-mode: backwards;
+			  animation-direction: alternate;
+			}
+			.dot._dot-2 {
+			  animation:dot_2 1s ease-in-out infinite;
+			  animation-fill-mode: backwards;
+			  animation-direction: alternate;
+			  animation-delay:1s;
+			}
+			.dot._dot-3 {
+			  animation:dot_3 1s ease-in-out infinite;
+			  animation-fill-mode: backwards;
+			  animation-direction: alternate;
+			  animation-delay:0.5s;
+			}
+			@keyframes dot_1 {
+			  0% {
+				top:0;
+				left:0;
+			  }
+			  
+			  50% {
+				top:30px;
+				left:20px;
+			  }
+			  
+			  100% {
+				top:0px;
+				left:40px;
+			  }
+			}
+			@keyframes dot_2 {
+			  0% {
+				top:0;
+				left:0;
+			  }
+			  
+			  50% {
+				top:-30px;
+				left:20px;
+			  }
+			  
+			  100% {
+				top:0px;
+				left:40px;
+			  }
+			}
+			@keyframes dot_3 {
+			  0% {
+				top:0;
+				left:0;
+			  }
+			  
+			  50% {
+				top:-30px;
+				left:-40px;
+			  }
+			  
+			  100% {
+				top:0px;
+				left:-80px;
+			  }
+			}
+			#load_section .author {
+			  position:fixed;
+			  top:0; bottom:0;
+			  left:0px;
+			  
+			  font-size:80%;
+			  transform:rotate(-10deg) translate(50px, 20px);
+			  
+			  padding:5px 0;
+			  text-align:center;
+			  
+			  color:#eee;
+			  opacity:0.8;
+			}
+			#load_section .author a {
+			  color:#78ECB4;
+			  text-decoration:none;
+			}
+			#load_section .author a:hover {
+			  color:#60D69D;
+			}
+			.affiliate-container .the-text {
+			  background-color: rgba(0,0,0,0.5);
+			}
+			.affiliate-container {
+			  opacity: 0.6;
+			  position: absolute;
+			  right: -20px;
+			  top: 0px;
+			  transform: scale(.8);
+			  transition: 0.2s all ease-in-out;
+			  margin-top: 0;
+			  justify-content: flex-end;
+			}
+			.affiliate-container:hover {
+			  opacity: 0.8;
+			  transform: scale(1);
+			}
+		</style>
+		<section id="load_section" class='loader'>
+		  <div class='loader-center'>
+			<div class='chars'>
+			  <span class='char brace'>{</span>
+			  <span class='dots'>
+				<span class='char dot _dot-1'>.</span>
+				<span class='char dot _dot-2'>.</span>
+				<span class='char dot _dot-3'>.</span>
+			  </span>
+			  <span class='char brace'>}</span>
+			</div><br>
+			<center><p>网页加载中</p></center>
+		  </div>
+		</section>
+		<script>
+			$("title").text("网页加载中");
+		</script>
+	</div>
+	<div id="load_pages" style="display: none">
+		<div id="percentageCounter"></div>
+		<div id="pjax_on">
+			<header id="header_main">
+				<div id="header">
+					<section class="container">
+						<h1 class="logo">
+							<a id="logo_title" href="?" title="{标题}" rel="home"><strong id="logo_titles">{标题}</strong><b class="shan"></b></a>
+						</h1>
+						<div class="nav-login"></div>
+						<div class="search_top">
+							<a title="繁简转换" class="top-tnrt" href="javascript:translatePage();" id="zh_tw">繁体</a>
+							<a href="javascript:;" title="点击搜索"><i class="fa fa-search"></i></a>
+							<div class="top_search ">
+									<input type="text" id="search_text" placeholder="输入关键字..." class="text">
+									<input type="submit" class="btn" value="搜索" onclick="com_search();">
+							</div>
+						</div>
+						<nav class="menu-nav">
+							<div class="nav-sjlogo">
+								<i class="nav-bar"><span></span><span></span><span></span></i>
+							</div>
+							<div class="nav-sousuo">
+								<div class="mini_search">
+										<input class="searchInput" type="text" id="ls" placeholder="请输入搜索内容..." >
+										<button type="submit" class="btn-search dtb2" value="" onclick="com_m_search();"><i class="fa fa-search"></i></button>
+								</div>
+								<a title="点击搜索" id="mo-so" href="javascript:;"><i class="fa fa-search icon-search"></i></a>
+								<a title="繁简转换" class="top-tnrt" href="javascript:translatePage();" id="zh_tw">繁体</a>
+							</div>
+							<div id="monavber" class="header-nav" data-type="index" data-infoid="index">
+								<aside class="mobile_aside mobile_nav">
+									<div id="site-menu-web" class="mobile-menu">
+										<ul id="nav" class="nav-pills navbar">
+											<li class="navbar-item "><a href="/" title=""><i
+													class="icon font-home"></i>首页</a></li>
+										</ul>
+									</div>
+								</aside>
+							</div>
+						</nav>
+					</section>
+				</div>
+			</header>
+			<div class="slide-wrap container clearfix">
+				<div class="fl">
+					<div class="side-hot">
+						<div id="postlist" class="home-main index-page"><!--页面主体信息-->
+						<div id="page_article_topping">
+						</div>
+						<div id="page_article">
+						</div>
+						</div>
+						<footer class="pagination wow fadeInDown">
+							<div id="page_num_list"></div>
+						</footer>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container footer_container">
+				<div class="footer_main clearfix">
+					<div id="footer" class="footer_links fl">
+						<a rel="nofollow" href="/page.html" target="_blank">免责声明</a>
+					</div>
+				</div>
+				<div class="footer_bottom">
+					<p class="foot-text foot-top left2">
+						Copyright ©<a id="web_title_end">{标题}</a>版权所有
+						<hr>
+						本站已安全运行<span id="iday"></span>天 
+						<script>
+							function siteRun(d) {
+								var nowD = new Date();
+								return parseInt((nowD.getTime() - Date.parse(d)) / 24 / 60 / 60 / 1000)
+							}
+							document.getElementById("iday").innerHTML = siteRun("2023/07/18");
+						</script>
+					</p>
+				</div>
+			</div>
+			<div id="backtop" class="backtop">
+				<div class="bt-box top"><i class="fa fa-angle-up fa-2x"></i></div>
+				<div class="bt-box bt_night"><a title="夜间模式" class="at-night" href="javascript:switchNightMode()"
+						target="_self"><i class="fa fa-moon-o fa-2x"></i></a></div>
+				<div class="bt-box bottom"><i class="fa fa-angle-down fa-2x"></i></div>
+			</div>
+		</footer>
+	</div>
+		<div class="pjax_loading"></div>
+		<div class="none">
+			<script src="./access/custom.js"></script>
+			<script src="./access/zh_tw.js"></script>
+			<script src="./config/article_list/0"></script>
+			<script>
+				//引用base64
+				page_base64 = new Base64();
+				//加载置顶文章列表
+				let site_toparticle_web_html;
+				for(let site_toparticle_web_key in page_http_toparticle_configs) {
+					if(site_toparticle_web_html==undefined)site_toparticle_web_html="";
+					if(page_http_toparticle_configs[site_toparticle_web_key]!=undefined&&site_toparticle_web_key!="备注"){
+						site_toparticle_web_html = site_toparticle_web_html+'\
+							<article class="post-list leftpic wow fadeInDown" onclick="openNewWindow(\'./page.html?page='+site_toparticle_web_key+'\');">\
+								<div class="post-pic">\
+									<a class="post-cat post-top"	target="_blank">置顶</a>\
+									<a class="post-link">\
+										<img class="lazy" src="'+((page_http_toparticle_configs[site_toparticle_web_key]["image"])?page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["image"]):"./access/images/00.jpg")+'"> </a>\
+								</div>\
+								<div class="post-info">\
+									<h2><a>'+((page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["flag"])=="true")?'<span class="recommend-flag">推荐</span>':'')+((page_http_toparticle_configs[site_toparticle_web_key]["title"])?page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["title"]):"此文章无标题")+'</a></h2>\
+									<div class="info-desc">'+((page_http_toparticle_configs[site_toparticle_web_key]["body"])?page_base64.decode(page_http_toparticle_configs[site_toparticle_web_key]["body"]):"此文章无简介")+'</div>\
+								</div>\
+							</article>\
+							';
+					}
+				}if(site_toparticle_web_html!=undefined)$("#page_article_topping").html(site_toparticle_web_html);
+				//加载文章列表
+				let site_articlelist_web_html;
+				for(let site_articlelist_web_key in page_http_articlelist_configs) {
+					if(site_articlelist_web_html==undefined)site_articlelist_web_html="";
+					if(page_http_articlelist_configs[site_articlelist_web_key]!=undefined&&site_articlelist_web_key!="备注"){
+						site_articlelist_web_html = site_articlelist_web_html+'\
+							<article class="post-list leftpic wow fadeInDown" onclick="openNewWindow(\'./page.html?page='+site_articlelist_web_key+'\');">\
+								<div class="post-pic">\
+									<a class="post-cat"	target="_blank">'+((page_http_articlelist_configs[site_articlelist_web_key]["type"])?page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["type"]):'未分类')+'</a>\
+									<a class="post-link">\
+										<img class="lazy" src="'+((page_http_articlelist_configs[site_articlelist_web_key]["image"])?page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["image"]):'./access/images/00.jpg')+'"> </a>\
+								</div>\
+								<div class="post-info">\
+									<h2><a>'+((page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["flag"])=="true")?'<span class="recommend-flag">推荐</span>':'')+((page_http_articlelist_configs[site_articlelist_web_key]["title"])?page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["title"]):"此文章无标题")+'</a></h2>\
+									<div class="info-desc">'+((page_http_articlelist_configs[site_articlelist_web_key]["body"])?page_base64.decode(page_http_articlelist_configs[site_articlelist_web_key]["body"]):"此文章无简介")+'</div>\
+								</div>\
+							</article>\
+							';
+					}
+				}if(site_articlelist_web_html!=undefined)$("#page_article").html(site_articlelist_web_html);
+				//加载文章列表页码数
+				let pagelist_number='<ul>';
+				var pagelist_i;
+				for (pagelist_i = 1; pagelist_i <= pagelist_numbers; pagelist_i++) {
+					if(page_articlelist_num==pagelist_i){
+						pagelist_number = pagelist_number+'<ul><li class="active"><span>'+pagelist_i+'</span></li>';
+					}else{
+						pagelist_number = pagelist_number+'<ul><li><a href="?page='+pagelist_i+'">'+pagelist_i+'</a></li>';
+					}
+				}if(pagelist_number!='<ul>')$("#page_num_list").html(pagelist_number+"<li><span>共 "+pagelist_numbers+" 页</span></li></ul>");
+			</script>
+			<script src="./access/home.js"></script>
+		</div>
+	</body>
+</html>
