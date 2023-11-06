@@ -1,5 +1,5 @@
 //控制台输出版权
-console.log("\n %c 轻量个人博客 %c "+page_http_get_configs['title']+" \n\n", "color: #fadfa3; background: #030307; padding:5px 0;", "color:black;background: #fadfa3; padding:5px 0;");
+console.log("\n %c 轻量个人博客 %c \n\n", "color: #fadfa3; background: #030307; padding:5px 0;", "color:black;background: #fadfa3; padding:5px 0;");
 
 let page_state = "no";//网页信息加载状态
 
