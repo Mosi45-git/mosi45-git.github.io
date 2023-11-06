@@ -140,7 +140,7 @@ function page_start(){
 		//使用计时器判断请求加载是否完成
 		var page_interval = setInterval(async function(){
 			//判断请求加载完成的必要条件是否齐全
-			if( page_http_toparticle_config.readyState == 4 && page_http_get_config.readyState == 4 ){
+			if( page_http_article_config.readyState == 4 && page_http_get_config.readyState == 4 ){
 				//检查api返回是否正常
 				if(page_http_article_config.readyState==4&&page_http_article_configs==undefined){
 					alert("数据异常，可能是网络不稳定，即将重新加载");
