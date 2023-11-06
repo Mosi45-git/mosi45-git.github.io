@@ -36,9 +36,9 @@
 			}
 			var page_articlelist_num = Number(GetQueryString("page"));
 			if(page_articlelist_num==undefined||page_articlelist_num<=0||Number.isInteger(page_articlelist_num)==false){page_articlelist_num=1;}
-			page_http_get_configs = await runget('./config/config');
-			page_http_toparticle_configs = await runget('./config/article_topping');
-			page_http_articlelist_configs = await  runget('./config/article_list/'+page_articlelist_num.toString());
+			page_http_get_configs = runget('./config/config');
+			page_http_toparticle_configs = runget('./config/article_topping');
+			page_http_articlelist_configs = runget('./config/article_list/'+page_articlelist_num.toString());
 		</script>
 		<title>{标题}</title>
 		<meta name="description" content="{描述}" />
