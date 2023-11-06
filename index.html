@@ -30,9 +30,7 @@
 			page_http_get_config.open("GET", page_http_get_config_url);
 			page_http_get_config.send();
 			page_http_get_config.onreadystatechange = (e) => {
-				if(page_http_get_config.readyState==4){
-					page_http_get_configs = JSON.parse(page_http_get_config.responseText);
-				}
+				page_http_get_configs = JSON.parse(page_http_get_config.responseText);
 			}
 			let page_http_toparticle_configs;
 			const page_http_toparticle_config = new XMLHttpRequest();
@@ -40,19 +38,16 @@
 			page_http_toparticle_config.open("GET", page_http_toparticle_config_url);
 			page_http_toparticle_config.send();
 			page_http_toparticle_config.onreadystatechange = (e) => {
-				if (page_http_toparticle_config.readyState==4){
-					page_http_toparticle_configs = JSON.parse(page_http_toparticle_config.responseText);
-				}
+				page_http_toparticle_configs = JSON.parse(page_http_toparticle_config.responseText);
 			}
+			console.log(page_http_toparticle_config.readyState);
 			let page_http_articlelist_configs;
 			const page_http_articlelist_config = new XMLHttpRequest();
 			const page_http_articlelist_config_url = './config/article_list/'+page_articlelist_num.toString();
 			page_http_articlelist_config.open("GET", page_http_articlelist_config_url);
 			page_http_articlelist_config.send();
 			page_http_articlelist_config.onreadystatechange = (e) => {
-				if (page_http_articlelist_config.readyState==4){
-					page_http_articlelist_configs = JSON.parse(page_http_articlelist_config.responseText);
-				}
+				page_http_articlelist_configs = JSON.parse(page_http_articlelist_config.responseText);
 			}
 		</script>
 		<title>{标题}</title>
