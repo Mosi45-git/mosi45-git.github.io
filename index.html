@@ -22,11 +22,14 @@
 			const page_http_get_config = new XMLHttpRequest();
 			const page_http_get_config_url = './config/config';
 			page_http_get_config.open("GET", url);
+			try{
 			page_http_get_config.send();
 			page_http_get_config.onreadystatechange = (e) => {
 				let page_xhr = JSON.parse(page_http_get_config.responseText);
-				console.log(page_xhr);
 				return page_xhr;
+			}
+			}catch(err){
+				console.log("通信存在故障");
 			}
 			await js_sleep(2000);
 			return runget(url);
@@ -40,9 +43,9 @@
 			}
 			var page_articlelist_num = Number(GetQueryString("page"));
 			if(page_articlelist_num==undefined||page_articlelist_num<=0||Number.isInteger(page_articlelist_num)==false){page_articlelist_num=1;}
-			page_http_get_configs = runget('./config/config');
-			page_http_toparticle_configs = runget('./config/article_topping');
-			page_http_articlelist_configs = runget('./config/article_list/'+page_articlelist_num.toString());
+			let page_http_get_configs = runget('./config/config');
+			let page_http_toparticle_configs = runget('./config/article_topping');
+			let page_http_articlelist_configs = runget('./config/article_list/'+page_articlelist_num.toString());
 		</script>
 		<title>{标题}</title>
 		<meta name="description" content="{描述}" />
