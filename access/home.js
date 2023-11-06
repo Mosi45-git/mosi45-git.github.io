@@ -41,7 +41,6 @@ function page_onload(){
 	$("title").text(page_http_get_configs['title']+" - "+page_http_get_configs['titles']);
 	$('meta[name="description"]')[0].content=page_http_get_configs['description'];
 	$('meta[name="keywords"]')[0].content=page_http_get_configs['description'];
-	if(typeof page_type==undefined){$('meta[property="og:type"]')[0].content=page_type;}else{$('meta[property="og:type"]')[0].content=page_http_get_configs['type'];}
 	$('meta[property="og:title"]')[0].content=page_http_get_configs['title']+" - "+page_http_get_configs['titles'];
 	$('meta[property="og:site_name"]')[0].content=page_http_get_configs['title']+" - "+page_http_get_configs['titles'];
 	$('meta[property="og:description"]')[0].content=page_http_get_configs['description'];
@@ -282,12 +281,10 @@ function page_end(){
 	//搜索页
 	if(location.pathname=="/search.html"){
 		var page_type="article";
-		var page_title=page_http_article_configs["title"];
-		var page_body=page_http_article_configs["body"];
 		//引用base64
 		page_base64 = new Base64();
 		//加载网页
-		$("title").text("搜索‘"+page_article_id+"’-"+page_http_get_configs['title']+" - "+page_http_get_configs['titles']);
+		$("title").text("搜索‘"+page_article_id+"’-"+page_http_get_configs['title']+"-"+page_http_get_configs['titles']);
 		//渲染搜索词
 		$("#search_texts").text(page_article_id);
 	}
@@ -301,6 +298,8 @@ var home_interval = setInterval(async function(){
 		page_onload();
 		//渲染正文
 		page_end();
+		//渲染网页类型
+		if(typeof page_type==undefined){$('meta[property="og:type"]')[0].content=page_type;}else{$('meta[property="og:type"]')[0].content=page_http_get_configs['type'];}
 		//注销计时器
 		clearInterval(home_interval);
 	}
