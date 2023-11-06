@@ -23,15 +23,15 @@
 				page_http_get_config.open("GET", url);
 				try{
 					page_http_get_config.send();
-					page_http_get_config.onreadystatechange = function(self,e,url){
-						let page_xhr = JSON.parse(page_http_get_config.responseText);
-						if(page_xhr['备注']==null){
-							return runget(url);
-						}else{
-							console.log(page_xhr);
-							return page_xhr;
-						}
+					
+					let page_xhr = JSON.parse(page_http_get_config.responseText);
+					if(page_xhr['备注']==null){
+						return runget(url);
+					}else{
+						console.log(page_xhr);
+						return page_xhr;
 					}
+					
 				}catch(err){
 					console.log("通信存在故障");
 					await js_sleep(2000);
