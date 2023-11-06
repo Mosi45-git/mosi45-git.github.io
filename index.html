@@ -24,6 +24,7 @@
 			page_http_get_config.onreadystatechange = (e) => {
 				page_xhr = JSON.parse(page_http_get_config.responseText);
 			}
+			console.log(page_xhr);
 			  return page_xhr;
 			}
 			function GetQueryString(name) {
