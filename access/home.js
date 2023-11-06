@@ -297,6 +297,8 @@ var home_interval = setInterval(async function(){
 		page_onload();
 		//渲染正文
 		page_end();
+		console.log(home_interval);
+		page_state=="off";
 		//注销计时器
 		clearInterval(home_interval);
 	}
