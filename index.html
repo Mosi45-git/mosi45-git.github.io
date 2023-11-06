@@ -16,15 +16,15 @@
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
 		<script>
 			function runget(url) {
-			let page_xhr;
 			const page_http_get_config = new XMLHttpRequest();
 			const page_http_get_config_url = './config/config';
 			page_http_get_config.open("GET", url);
 			page_http_get_config.send();
 			page_http_get_config.onreadystatechange = (e) => {
-				page_xhr = JSON.parse(page_http_get_config.responseText);
+				let page_xhr = JSON.parse(page_http_get_config.responseText);
+				console.log(page_xhr);
+				return page_xhr;
 			}
-			console.log(page_xhr);
 			  return page_xhr;
 			}
 			function GetQueryString(name) {
