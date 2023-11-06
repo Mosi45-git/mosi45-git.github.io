@@ -4,8 +4,6 @@
 		<link rel="prerender" href="./config/config"/>
 		<link rel="prefetch" href="./config/article_topping"/>
 		<link rel="prerender" href="./config/article_topping"/>
-		<link rel="prefetch" href="./config/article_list/0"/>
-		<link rel="prerender" href="./config/article_list/0"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
@@ -22,8 +20,8 @@
 			        return unescape(r[2]);
 			    return undefined;
 			}
-			var page_articlelist_num = GetQueryString("page");
-			if(page_articlelist_num==undefined||page_articlelist_num<=0){page_articlelist_num="1";}
+			var page_articlelist_num = Number(GetQueryString("page"));
+			if(page_articlelist_num==undefined||page_articlelist_num<=0||Number.isInteger(page_articlelist_num)){page_articlelist_num=1;}
 			let page_http_get_configs;
 			const page_http_get_config = new XMLHttpRequest();
 			const page_http_get_config_url = './config/config';
