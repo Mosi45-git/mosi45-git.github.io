@@ -15,9 +15,6 @@
 		<meta http-equiv="Cache-Control" content="no-transform" />
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
 		<script>
-			async function js_sleep(time){
-			 return new Promise((resolve) => setTimeout(resolve, time));
-			}
 			function GetQueryString(name) {
 			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 			    var r = window.location.search.substr(1).match(reg);
@@ -49,6 +46,7 @@
 			page_http_articlelist_config.open("GET", page_http_articlelist_config_url);
 			page_http_articlelist_config.send();
 			page_http_articlelist_config.onreadystatechange = (e) => {
+				alert(1);
 				page_http_articlelist_configs = JSON.parse(page_http_articlelist_config.responseText);
 			}
 		</script>
@@ -67,7 +65,6 @@
 		<link href="./access/font-awesome.min.css" rel="stylesheet">
 		<link href="./access/style.css" type="text/css" media="all" rel="stylesheet" />
 		<script>
-		js_sleep(1000);
 		if(page_http_get_configs==undefined||page_http_toparticle_configs==undefined){
 			alert("数据异常，可能是网络不稳定，即将重新加载");
 			location.reload();
