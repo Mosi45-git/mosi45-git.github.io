@@ -1,6 +1,8 @@
 //控制台输出版权
 console.log("\n %c 轻量个人博客 %c "+page_http_get_configs['title']+" \n\n", "color: #fadfa3; background: #030307; padding:5px 0;", "color:black;background: #fadfa3; padding:5px 0;");
 
+let page_state = "no";//网页信息加载状态
+
 //获取查询参数
 function GetQueryString(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -72,10 +74,6 @@ function page_start(){
 		page_http_get_config.send();
 		page_http_get_config.onreadystatechange = (e) => {
 			page_http_get_configs = JSON.parse(page_http_get_config.responseText);
-			if (page_http_get_config.readyState == 4 && page_http_get_configs == undefined) {
-				alert("数据异常，可能是网络不稳定，即将重新加载");
-				location.reload();
-			}
 		}
 		let page_http_toparticle_configs;
 		const page_http_toparticle_config = new XMLHttpRequest();
@@ -84,10 +82,6 @@ function page_start(){
 		page_http_toparticle_config.send();
 		page_http_toparticle_config.onreadystatechange = (e) => {
 			page_http_toparticle_configs = JSON.parse(page_http_toparticle_config.responseText);
-			if (page_http_toparticle_config.readyState == 4 && page_http_toparticle_configs == undefined) {
-				alert("数据异常，可能是网络不稳定，即将重新加载");
-				location.reload();
-			}
 		}
 		let page_http_articlelist_configs;
 		const page_http_articlelist_config = new XMLHttpRequest();
@@ -96,11 +90,30 @@ function page_start(){
 		page_http_articlelist_config.send();
 		page_http_articlelist_config.onreadystatechange = (e) => {
 			page_http_articlelist_configs = JSON.parse(page_http_articlelist_config.responseText);
-			if (page_http_articlelist_config.readyState == 4 && page_http_articlelist_configs == undefined) {
-				alert("数据异常，可能是网络不稳定，也可能是错误的页码" + page_articlelist_num.toString());
-				location.href = "./index.html";
-			}
 		}
+		//使用计时器判断请求加载是否完成
+		var interval = setInterval(async function(){
+			//判断请求加载完成的必要条件是否齐全
+			if( page_http_articlelist_config.readyState == 4&& page_http_toparticle_config.readyState == 4 && page_http_get_config.readyState == 4 ){
+				//检查api返回是否正常
+				if (page_http_articlelist_config.readyState == 4 && page_http_articlelist_configs == undefined) {
+					alert("数据异常，可能是网络不稳定，也可能是错误的页码" + page_articlelist_num.toString());
+					location.href = "./index.html";
+				}
+				if (page_http_toparticle_config.readyState == 4 && page_http_toparticle_configs == undefined) {
+					alert("数据异常，可能是网络不稳定，即将重新加载");
+					location.reload();
+				}
+				if (page_http_get_config.readyState == 4 && page_http_get_configs == undefined) {
+					alert("数据异常，可能是网络不稳定，即将重新加载");
+					location.reload();
+				}
+				//网页信息加载完成
+				page_state = "ok";
+				//注销计时器
+				clearInterval(interval);
+			}
+		},100);
 	}
 	if(location.pathname=="/page.html"){
 		//文章页
@@ -113,10 +126,6 @@ function page_start(){
 		page_http_get_config.send();
 		page_http_get_config.onreadystatechange = (e) => {
 			page_http_get_configs = JSON.parse(page_http_get_config.responseText);
-			if(page_http_get_config.readyState==4&&page_http_get_configs==undefined){
-				alert("数据异常，可能是网络不稳定，即将重新加载");
-				location.reload();
-			}
 		}
 		let page_http_article_configs;
 		const page_http_article_config = new XMLHttpRequest();
@@ -125,11 +134,26 @@ function page_start(){
 		page_http_article_config.send();
 		page_http_article_config.onreadystatechange = (e) => {
 			page_http_article_configs = JSON.parse(page_http_article_config.responseText);
-			if(page_http_article_config.readyState==4&&page_http_article_configs==undefined){
-				alert("数据异常，可能是网络不稳定，即将重新加载");
-				location.reload();
-			}
 		}
+		//使用计时器判断请求加载是否完成
+		var interval = setInterval(async function(){
+			//判断请求加载完成的必要条件是否齐全
+			if( page_http_toparticle_config.readyState == 4 && page_http_get_config.readyState == 4 ){
+				//检查api返回是否正常
+				if(page_http_article_config.readyState==4&&page_http_article_configs==undefined){
+					alert("数据异常，可能是网络不稳定，即将重新加载");
+					location.reload();
+				}
+				if(page_http_get_config.readyState==4&&page_http_get_configs==undefined){
+					alert("数据异常，可能是网络不稳定，即将重新加载");
+					location.reload();
+				}
+				//网页信息加载完成
+				page_state = "ok";
+				//注销计时器
+				clearInterval(interval);
+			}
+		},100);
 	}
 	if(location.pathname=="/search.html"){
 		//搜索页
@@ -142,11 +166,22 @@ function page_start(){
 		page_http_get_config.send();
 		page_http_get_config.onreadystatechange = (e) => {
 			page_http_get_configs = JSON.parse(page_http_get_config.responseText);
+		}
+		//使用计时器判断请求加载是否完成
+		var interval = setInterval(async function(){
+			//检查api返回是否正常
 			if(page_http_get_config.readyState==4&&page_http_get_configs==undefined){
 				alert("数据异常，可能是网络不稳定，即将重新加载");
 				location.reload();
 			}
-		}
+			//判断请求加载完成的必要条件是否齐全
+			if( page_http_get_config.readyState == 4 ){
+				//网页信息加载完成
+				page_state = "ok";
+				//注销计时器
+				clearInterval(interval);
+			}
+		},100);
 	}
 }
 
@@ -258,7 +293,7 @@ function page_end(){
 //使用计时器判断网站信息加载是否完成
 var interval = setInterval(async function(){
 	//判断网站信息加载完成的必要条件是否齐全
-	if(page_http_get_configs['title']!=null){
+	if(page_state=="ok"){
 		//渲染网页
 		page_onload();
 		//注销计时器
@@ -266,3 +301,5 @@ var interval = setInterval(async function(){
 	}
 },100);
 
+//网页脚本运作
+page_start();
