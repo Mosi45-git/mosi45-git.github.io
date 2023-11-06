@@ -15,6 +15,17 @@
 		<meta http-equiv="Cache-Control" content="no-transform" />
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
 		<script>
+			function runget(url) {
+			let page_xhr;
+			const page_http_get_config = new XMLHttpRequest();
+			const page_http_get_config_url = './config/config';
+			page_http_get_config.open("GET", url);
+			page_http_get_config.send();
+			page_http_get_config.onreadystatechange = (e) => {
+				page_xhr = JSON.parse(page_http_get_config.responseText);
+			}
+			  return page_xhr;
+			}
 			function GetQueryString(name) {
 			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 			    var r = window.location.search.substr(1).match(reg);
@@ -24,30 +35,9 @@
 			}
 			var page_articlelist_num = Number(GetQueryString("page"));
 			if(page_articlelist_num==undefined||page_articlelist_num<=0||Number.isInteger(page_articlelist_num)==false){page_articlelist_num=1;}
-			let page_http_get_configs;
-			const page_http_get_config = new XMLHttpRequest();
-			const page_http_get_config_url = './config/config';
-			page_http_get_config.open("GET", page_http_get_config_url);
-			page_http_get_config.send();
-			page_http_get_config.onreadystatechange = (e) => {
-				page_http_get_configs = JSON.parse(page_http_get_config.responseText);
-			}
-			let page_http_toparticle_configs;
-			const page_http_toparticle_config = new XMLHttpRequest();
-			const page_http_toparticle_config_url = './config/article_topping';
-			page_http_toparticle_config.open("GET", page_http_toparticle_config_url);
-			page_http_toparticle_config.send();
-			page_http_toparticle_config.onreadystatechange = (e) => {
-				page_http_toparticle_configs = JSON.parse(page_http_toparticle_config.responseText);
-			}
-			let page_http_articlelist_configs;
-			const page_http_articlelist_config = new XMLHttpRequest();
-			const page_http_articlelist_config_url = './config/article_list/'+page_articlelist_num.toString();
-			page_http_articlelist_config.open("GET", page_http_articlelist_config_url);
-			page_http_articlelist_config.send();
-			page_http_articlelist_config.onreadystatechange = (e) => {
-				page_http_articlelist_configs = JSON.parse(page_http_articlelist_config.responseText);
-			}
+			let page_http_get_configs = runget('./config/config');
+			let page_http_toparticle_configs = runget('./config/article_topping');
+			let page_http_articlelist_configs = runget('./config/article_list/'+page_articlelist_num.toString());
 		</script>
 		<title>{标题}</title>
 		<meta name="description" content="{描述}" />
