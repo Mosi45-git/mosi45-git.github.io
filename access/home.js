@@ -14,7 +14,11 @@ let site_start_time = "2023/11/7";//网站首日运作日期(年/月/日)
 //设置底部安全运行时长
 function siteRun(d) {
 	var nowD = new Date();
-	return parseInt((nowD.getTime() - Date.parse(d)) / 24 / 60 / 60 / 1000)
+	var days = parseInt((nowD.getTime() - Date.parse(d)) / 24 / 60 / 60 / 1000);
+	if(days==0){
+		return "0(首日运行)";
+	}
+	return days;
 }
 //判断网页底部安全运行时长展示是否存在
 if(document.getElementById("iday")!=null){
