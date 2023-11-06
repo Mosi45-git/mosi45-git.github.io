@@ -7,6 +7,8 @@ let page_http_get_configs;//网站网页基础信息
 let page_http_toparticle_configs;//网页置顶文章信息
 let page_http_article_configs;//网页文章内容信息
 let page_http_articlelist_configs;//网页列表信息
+var page_articlelist_num;//网页首页页码
+var page_article_id;//文章页ID或查询页查询内容
 
 //获取查询参数
 function GetQueryString(name) {
@@ -67,7 +69,7 @@ function page_onload(){
 function page_start(){
 	//网站首页
 	if(location.pathname=="/"||location.pathname=="/index.html"){
-		var page_articlelist_num = Number(GetQueryString("page"));
+		page_articlelist_num = Number(GetQueryString("page"));
 		if (page_articlelist_num == undefined || page_articlelist_num <= 0 || Number.isInteger(page_articlelist_num) ==
 			false) {
 			page_articlelist_num = 1;
@@ -119,7 +121,7 @@ function page_start(){
 	}
 	//文章页
 	if(location.pathname=="/page.html"){
-		var page_article_id = GetQueryString("page");
+		page_article_id = GetQueryString("page");
 		if(page_article_id==undefined){alert("文章不存在");location.href="./index.html";}
 		const page_http_get_config = new XMLHttpRequest();
 		const page_http_get_config_url = './config/config';
