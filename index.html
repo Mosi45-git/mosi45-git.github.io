@@ -32,7 +32,7 @@
 			page_http_get_config.onreadystatechange = (e) => {
 				page_http_get_configs = JSON.parse(page_http_get_config.responseText);
 			}
-			function(){while(page_http_get_config.readyState!=4){}}
+			//while(page_http_get_config.readyState!=4){}
 			let page_http_toparticle_configs;
 			const page_http_toparticle_config = new XMLHttpRequest();
 			const page_http_toparticle_config_url = './config/article_topping';
