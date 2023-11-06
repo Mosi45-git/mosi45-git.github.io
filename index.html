@@ -64,11 +64,11 @@
 		<link href="./access/font-awesome.min.css" rel="stylesheet">
 		<link href="./access/style.css" type="text/css" media="all" rel="stylesheet" />
 		<script>
-		if(page_http_get_configs==undefined||page_http_toparticle_configs==undefined||page_http_articlelist_configs==undefined){
+		if(page_http_get_configs==undefined||page_http_toparticle_configs==undefined){
 			alert("数据异常，可能是网络不稳定，即将重新加载");
 			location.reload();
 		}
-		if(page_http_articlelist_configs==undefined){alert("错误的页码"+page_articlelist_num.toString());location.href="./index.html";}
+		if(page_http_articlelist_configs==undefined){alert("数据异常，可能是网络不稳定，也可能是错误的页码"+page_articlelist_num.toString());location.href="./index.html";}
 		</script>
 	</head>
 	<body class="home-index">
