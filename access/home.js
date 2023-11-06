@@ -57,13 +57,15 @@ function page_onload(){
 	for(let site_footer_web_key in page_http_get_configs['footer']) {
 		if(site_footer_web_html==undefined)site_footer_web_html="";if(page_http_get_configs['footer'][site_footer_web_key]!=undefined&&site_footer_web_key!="备注")site_footer_web_html = site_footer_web_html+'<a href="'+page_http_get_configs['footer'][site_footer_web_key]+'"><i class="icon font-home"></i>'+site_footer_web_key+'</a>';
 	}if(site_footer_web_html!=undefined)$("#footer").html(site_footer_web_html+"</ul>");
+	//渲染正文
+	page_end();
 	//隐藏加载页
 	$("#load_page").hide();
 	//展示网页内容
 	$("#load_pages").css("display","block");
 }
 
-//网页逻辑首处理
+//网页逻辑首处理（网页信息拉取）
 function page_start(){
 	if(location.pathname=="/"||location.pathname=="/index.html"){
 		//网站首页
@@ -184,7 +186,7 @@ function page_start(){
 	}
 }
 
-//网页逻辑尾处理
+//网页逻辑尾处理（网页正文渲染）
 function page_end(){
 	if(location.pathname=="/"||location.pathname=="/index.html"){
 		//网站首页
