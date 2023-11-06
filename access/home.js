@@ -1,7 +1,7 @@
 //控制台输出版权
-console.log("\n %c 轻量个人博客 %c \n\n", "color: #fadfa3; background: #030307; padding:5px 0;", "color:black;background: #fadfa3; padding:5px 0;");
+console.log("\n %c 轻量个人博客 %c \n开发者：陌斯\n", "color: #fadfa3; background: #030307; padding:5px 0;", "color:black;background: #fadfa3; padding:5px 0;");
 
-//网站的基础变量
+//网站的基础全局变量
 let page_state = "no";//网页信息加载状态
 let page_http_get_configs;//网站网页基础信息
 let page_http_toparticle_configs;//网页置顶文章信息
@@ -9,7 +9,19 @@ let page_http_article_configs;//网页文章内容信息
 let page_http_articlelist_configs;//网页列表信息
 var page_articlelist_num;//网页首页页码
 var page_article_id;//文章页ID或查询页查询内容
+let site_start_time = "2023/11/7";//网站首日运作日期(年/月/日)
 
+
+//设置底部安全运行时长
+function siteRun(d) {
+	var nowD = new Date();
+	return parseInt((nowD.getTime() - Date.parse(d)) / 24 / 60 / 60 / 1000)
+}
+//判断网页底部安全运行时长展示是否存在
+if(document.getElementById("iday")!=null){
+	//展示网站安全运行时长
+	document.getElementById("iday").innerHTML = siteRun(site_start_time);
+}
 //获取查询参数
 function GetQueryString(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -307,3 +319,4 @@ var home_interval = setInterval(async function(){
 
 //网页逻辑程序运作
 page_start();
+
