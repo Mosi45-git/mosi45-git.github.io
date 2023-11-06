@@ -65,8 +65,8 @@ function page_onload(){
 
 //网页逻辑首处理（网页信息拉取）
 function page_start(){
+	//网站首页
 	if(location.pathname=="/"||location.pathname=="/index.html"){
-		//网站首页
 		var page_articlelist_num = Number(GetQueryString("page"));
 		if (page_articlelist_num == undefined || page_articlelist_num <= 0 || Number.isInteger(page_articlelist_num) ==
 			false) {
@@ -117,8 +117,8 @@ function page_start(){
 			}
 		},100);
 	}
+	//文章页
 	if(location.pathname=="/page.html"){
-		//文章页
 		var page_article_id = GetQueryString("page");
 		if(page_article_id==undefined){alert("文章不存在");location.href="./index.html";}
 		const page_http_get_config = new XMLHttpRequest();
@@ -155,8 +155,8 @@ function page_start(){
 			}
 		},100);
 	}
+	//搜索页
 	if(location.pathname=="/search.html"){
-		//搜索页
 		var page_article_id = GetQueryString("search");
 		if(page_article_id==undefined||page_article_id==""){location.href="./index.html";}
 		const page_http_get_config = new XMLHttpRequest();
@@ -186,8 +186,8 @@ function page_start(){
 
 //网页逻辑尾处理（网页正文渲染）
 function page_end(){
+	//网站首页
 	if(location.pathname=="/"||location.pathname=="/index.html"){
-		//网站首页
 		//引用base64
 		page_base64 = new Base64();
 		//加载置顶文章列表
@@ -246,7 +246,9 @@ function page_end(){
 					';
 			}
 		}
-		if (site_articlelist_web_html != undefined) $("#page_article").html(site_articlelist_web_html);
+		if (site_articlelist_web_html != undefined){
+			$("#page_article").html(site_articlelist_web_html);
+		}
 		//加载文章列表页码数
 		let pagelist_number = '<ul>';
 		var pagelist_i;
@@ -263,8 +265,8 @@ function page_end(){
 			" 页</span></li></ul>");
 		}
 	}
+	//文章页
 	if(location.pathname=="/page.html"){
-		//文章页
 		var page_type="article";
 		var page_title=page_http_article_configs["title"];
 		var page_body=page_http_article_configs["body"];
@@ -275,8 +277,8 @@ function page_end(){
 		//加载文章内容
 		$("#page_body").html(page_base64.decode(page_body));
 	}
+	//搜索页
 	if(location.pathname=="/search.html"){
-		//搜索页
 		var page_type="article";
 		var page_title=page_http_article_configs["title"];
 		var page_body=page_http_article_configs["body"];
@@ -297,8 +299,6 @@ var home_interval = setInterval(async function(){
 		page_onload();
 		//渲染正文
 		page_end();
-		console.log(home_interval);
-		page_state=="off";
 		//注销计时器
 		clearInterval(home_interval);
 	}
