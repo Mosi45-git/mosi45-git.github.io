@@ -18,20 +18,27 @@
 			async function js_sleep(time){
 			 return new Promise((resolve) => setTimeout(resolve, time));
 			}
-			async function runget(url) {
+			async function rungetxhr(url){
 				const page_http_get_config = new XMLHttpRequest();
 				page_http_get_config.open("GET", url);
 				try{
 					page_http_get_config.send();
-					
-					let page_xhr = JSON.parse(page_http_get_config.responseText);
-					if(page_xhr['备注']==null){
-						return runget(url);
-					}else{
-						console.log(page_xhr);
-						return page_xhr;
+				}catch(err){
+					return false;
+				}
+				return page_http_get_config;
+			}
+			async function runget(url) {
+				const page_http_get_config = rungetxhr(url);
+				try{
+					page_http_get_config.onreadystatechange = (e) => {
+						let page_xhr = JSON.parse(page_http_get_config.responseText);
+						if(page_xhr['备注']==null){
+							return runget(url);
+						}else{
+							return page_xhr;
+						}
 					}
-					
 				}catch(err){
 					console.log("通信存在故障");
 					await js_sleep(2000);
