@@ -19,30 +19,23 @@
 			 return new Promise((resolve) => setTimeout(resolve, time));
 			}
 			async function runget(url) {
-				let result;
-				const page_http_get_config = new XMLHttpRequest();
-				try{
-					page_http_get_config.open("GET", url);
-					page_http_get_config.send();
-					while(result == undefined){
-						page_http_get_config.onload = async function() {
-							if (xhr.status >= 200 && xhr.status < 300) {
-								let page_xhr = JSON.parse(page_http_get_config.responseText);
-								console.log(page_xhr);
-								result = page_xhr;
-							}else{
-								console.log("数据返回错误");
-								await js_sleep(2000);
-								result = runget(url);
-							}
-						}
-					}
-				}catch(err){
-					console.log("通信存在故障");
-					await js_sleep(2000);
-					result = runget(url);
-				}
-				return result;
+			const xhr = new XMLHttpRequest();
+			xhr.open("GET", url);
+			let result;
+			xhr.onload = function() {
+			if (xhr.status >= 200 && xhr.status < 300) {
+			  result = xhr.responseText;
+			} else {
+			  result = new Error(xhr.statusText);
+			}
+			};
+			xhr.onerror = function() {
+			result = runget(url);
+			};
+			xhr.send();
+			while (result === undefined) {}
+			return JSON.parse(result)
+			return result;
 			}
 			function GetQueryString(name) {
 			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
