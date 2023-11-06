@@ -24,7 +24,7 @@
 				try{
 					page_http_get_config.open("GET", url);
 					page_http_get_config.send();
-					page_http_get_config.onload =  function() {
+					page_http_get_config.onload = async function() {
 						if (xhr.status >= 200 && xhr.status < 300) {
 							let page_xhr = JSON.parse(page_http_get_config.responseText);
 							console.log(page_xhr);
