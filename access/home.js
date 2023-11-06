@@ -94,7 +94,7 @@ function page_start(){
 			page_http_articlelist_configs = JSON.parse(page_http_articlelist_config.responseText);
 		}
 		//使用计时器判断请求加载是否完成
-		var interval = setInterval(async function(){
+		var index_interval = setInterval(async function(){
 			//判断请求加载完成的必要条件是否齐全
 			if( page_http_articlelist_config.readyState == 4&& page_http_toparticle_config.readyState == 4 && page_http_get_config.readyState == 4 ){
 				//检查api返回是否正常
@@ -113,7 +113,7 @@ function page_start(){
 				//网页信息加载完成
 				page_state = "ok";
 				//注销计时器
-				clearInterval(interval);
+				clearInterval(index_interval);
 			}
 		},100);
 	}
@@ -136,7 +136,7 @@ function page_start(){
 			page_http_article_configs = JSON.parse(page_http_article_config.responseText);
 		}
 		//使用计时器判断请求加载是否完成
-		var interval = setInterval(async function(){
+		var page_interval = setInterval(async function(){
 			//判断请求加载完成的必要条件是否齐全
 			if( page_http_toparticle_config.readyState == 4 && page_http_get_config.readyState == 4 ){
 				//检查api返回是否正常
@@ -151,7 +151,7 @@ function page_start(){
 				//网页信息加载完成
 				page_state = "ok";
 				//注销计时器
-				clearInterval(interval);
+				clearInterval(page_interval);
 			}
 		},100);
 	}
@@ -167,7 +167,7 @@ function page_start(){
 			page_http_get_configs = JSON.parse(page_http_get_config.responseText);
 		}
 		//使用计时器判断请求加载是否完成
-		var interval = setInterval(async function(){
+		var search_interval = setInterval(async function(){
 			//检查api返回是否正常
 			if(page_http_get_config.readyState==4&&page_http_get_configs==undefined){
 				alert("数据异常，可能是网络不稳定，即将重新加载");
@@ -178,7 +178,7 @@ function page_start(){
 				//网页信息加载完成
 				page_state = "ok";
 				//注销计时器
-				clearInterval(interval);
+				clearInterval(search_interval);
 			}
 		},100);
 	}
@@ -290,7 +290,7 @@ function page_end(){
 }
 
 //使用计时器判断网站信息加载是否完成
-var interval = setInterval(async function(){
+var home_interval = setInterval(async function(){
 	//判断网站信息加载完成的必要条件是否齐全
 	if(page_state=="ok"){
 		//渲染网页
@@ -298,7 +298,7 @@ var interval = setInterval(async function(){
 		//渲染正文
 		page_end();
 		//注销计时器
-		clearInterval(interval);
+		clearInterval(home_interval);
 	}
 },100);
 
