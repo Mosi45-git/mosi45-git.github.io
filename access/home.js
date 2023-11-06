@@ -1,5 +1,21 @@
+function com_search(s=$("#search_text").val()){
+	if(s==""||s==undefined){
+		alert("搜索内容不得为空");
+		return 0;
+	}
+	openNewWindow("./search.html?search="+s);
+}
+function com_m_search(s=$("#ls").val()){
+	if(s==""||s==undefined){
+		alert("搜索内容不得为空");
+		return 0;
+	}
+	openNewWindow("./search.html?search="+s);
+}
 //控制台输出版权
 console.log("\n %c 轻量个人博客 %c "+page_http_get_configs['title']+" \n\n", "color: #fadfa3; background: #030307; padding:5px 0;", "color:black;background: #fadfa3; padding:5px 0;");
+//网站信息加载事件
+function page_onload(){
 //加载网站信息
 $("title").text(page_http_get_configs['title']+" - "+page_http_get_configs['titles']);
 $('meta[name="description"]')[0].content=page_http_get_configs['description'];
@@ -22,22 +38,18 @@ let site_footer_web_html;
 for(let site_footer_web_key in page_http_get_configs['footer']) {
 	if(site_footer_web_html==undefined)site_footer_web_html="";if(page_http_get_configs['footer'][site_footer_web_key]!=undefined&&site_footer_web_key!="备注")site_footer_web_html = site_footer_web_html+'<a href="'+page_http_get_configs['footer'][site_footer_web_key]+'"><i class="icon font-home"></i>'+site_footer_web_key+'</a>';
 }if(site_footer_web_html!=undefined)$("#footer").html(site_footer_web_html+"</ul>");
-//搜索功能
-function com_search(s=$("#search_text").val()){
-	if(s==""||s==undefined){
-		alert("搜索内容不得为空");
-		return 0;
-	}
-	openNewWindow("./search.html?search="+s);
-}
-function com_m_search(s=$("#ls").val()){
-	if(s==""||s==undefined){
-		alert("搜索内容不得为空");
-		return 0;
-	}
-	openNewWindow("./search.html?search="+s);
-}
 //隐藏加载页
 $("#load_page").hide();
 //展示网页内容
 $("#load_pages").css("display","block");
+}
+//使用计时器判断网站信息加载是否完成
+var interval = setInterval(async function(){
+	//判断网站信息加载完成的必要条件是否齐全
+	if(page_http_get_configs['title']!=null){
+		//渲染网页
+		page_onload();
+		//注销计时器
+		clearInterval(interval);
+	}
+},100);
