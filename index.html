@@ -40,7 +40,7 @@
 			}
 			let page_http_articlelist_configs;
 			const page_http_articlelist_config = new XMLHttpRequest();
-			const page_http_articlelist_config_url = './config/article_list/'+toString(page_articlelist_num);
+			const page_http_articlelist_config_url = './config/article_list/'+page_articlelist_num.toString();
 			page_http_articlelist_config.open("GET", page_http_articlelist_config_url);
 			page_http_articlelist_config.send();
 			page_http_articlelist_config.onreadystatechange = (e) => {
@@ -66,7 +66,7 @@
 			alert("网络不稳定，即将重新加载");
 			location.reload();
 		}
-		if(page_http_articlelist_configs==undefined){alert("错误的页码"+page_articlelist_num);location.href="./index.html";}
+		if(page_http_articlelist_configs==undefined){alert("错误的页码"+page_articlelist_num.toString());location.href="./index.html";}
 		</script>
 	</head>
 	<body class="home-index">
