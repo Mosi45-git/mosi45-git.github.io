@@ -11,7 +11,6 @@ var page_articlelist_num;//网页首页页码
 var page_article_id;//文章页ID或查询页查询内容
 let site_start_time = "2023/11/7";//网站首日运作日期(年/月/日)
 
-
 //设置底部安全运行时长
 function siteRun(d) {
 	var nowD = new Date();
@@ -319,4 +318,3 @@ var home_interval = setInterval(async function(){
 
 //网页逻辑程序运作
 page_start();
-
