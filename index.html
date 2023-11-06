@@ -4,6 +4,8 @@
 		<link rel="prerender" href="./config/config"/>
 		<link rel="prefetch" href="./config/article_topping"/>
 		<link rel="prerender" href="./config/article_topping"/>
+		<link rel="prefetch" href="./config/article_list/0"/>
+		<link rel="prerender" href="./config/article_list/0"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
@@ -62,11 +64,11 @@
 		<link href="./access/font-awesome.min.css" rel="stylesheet">
 		<link href="./access/style.css" type="text/css" media="all" rel="stylesheet" />
 		<script>
-		if(page_http_get_configs==undefined||page_http_toparticle_configs==undefined||page_http_articlelist_configs==undefined){
+		if(page_http_get_configs==undefined||page_http_toparticle_configs==undefined){
 			alert("网络不稳定，即将重新加载");
 			location.reload();
 		}
-		if(page_http_articlelist_configs==undefined){alert("错误的页码");location.href="./index.html";}
+		if(page_http_articlelist_configs==undefined){alert("错误的页码"+page_articlelist_num);location.href="./index.html";}
 		</script>
 	</head>
 	<body class="home-index">
