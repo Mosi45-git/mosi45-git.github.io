@@ -30,9 +30,9 @@
 			}
 			}catch(err){
 				console.log("通信存在故障");
+				await js_sleep(2000);
+				return runget(url);
 			}
-			await js_sleep(2000);
-			return runget(url);
 			}
 			function GetQueryString(name) {
 			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
