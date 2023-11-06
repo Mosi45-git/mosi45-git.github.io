@@ -159,7 +159,7 @@ function page_start(){
 	}
 	//搜索页
 	if(location.pathname=="/search.html"){
-		var page_article_id = GetQueryString("search");
+		page_article_id = GetQueryString("search");
 		if(page_article_id==undefined||page_article_id==""){location.href="./index.html";}
 		const page_http_get_config = new XMLHttpRequest();
 		const page_http_get_config_url = './config/config';
@@ -286,10 +286,10 @@ function page_end(){
 		var page_body=page_http_article_configs["body"];
 		//引用base64
 		page_base64 = new Base64();
-		//加载文章标题
-		$("#page_title").text(page_base64.decode(page_title));
-		//加载文章内容
-		$("#page_body").html(page_base64.decode(page_body));
+		//加载网页
+		$("title").text("搜索‘"page_article_id+"’-"+page_http_get_configs['title']+" - "+page_http_get_configs['titles']);
+		//渲染搜索词
+		$("#search_texts").text(page_article_id);
 	}
 }
 
@@ -306,5 +306,5 @@ var home_interval = setInterval(async function(){
 	}
 },100);
 
-//网页脚本运作
+//网页逻辑程序运作
 page_start();
