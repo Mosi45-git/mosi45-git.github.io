@@ -40,7 +40,7 @@
 			}
 			let page_http_articlelist_configs;
 			const page_http_articlelist_config = new XMLHttpRequest();
-			const page_http_articlelist_config_url = './config/article_list/'+page_articlelist_num;
+			const page_http_articlelist_config_url = './config/article_list/'+toString(page_articlelist_num);
 			page_http_articlelist_config.open("GET", page_http_articlelist_config_url);
 			page_http_articlelist_config.send();
 			page_http_articlelist_config.onreadystatechange = (e) => {
