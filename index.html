@@ -19,20 +19,19 @@
 			 return new Promise((resolve) => setTimeout(resolve, time));
 			}
 			async function runget(url) {
-			const page_http_get_config = new XMLHttpRequest();
-			const page_http_get_config_url = './config/config';
-			page_http_get_config.open("GET", url);
-			try{
-			page_http_get_config.send();
-			page_http_get_config.onreadystatechange = (e) => {
-				let page_xhr = JSON.parse(page_http_get_config.responseText);
-				return page_xhr;
-			}
-			}catch(err){
-				console.log("通信存在故障");
-				await js_sleep(2000);
-				return runget(url);
-			}
+				const page_http_get_config = new XMLHttpRequest();
+				page_http_get_config.open("GET", url);
+				try{
+					page_http_get_config.send();
+					page_http_get_config.onreadystatechange = (e) => {
+						let page_xhr = JSON.parse(page_http_get_config.responseText);
+						return page_xhr;
+					}
+				}catch(err){
+					console.log("通信存在故障");
+					await js_sleep(2000);
+					return runget(url);
+				}
 			}
 			function GetQueryString(name) {
 			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
