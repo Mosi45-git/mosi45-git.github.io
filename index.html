@@ -32,6 +32,7 @@
 			page_http_get_config.onreadystatechange = (e) => {
 				page_http_get_configs = JSON.parse(page_http_get_config.responseText);
 			}
+			while(page_http_get_config.readyState!=4){}
 			let page_http_toparticle_configs;
 			const page_http_toparticle_config = new XMLHttpRequest();
 			const page_http_toparticle_config_url = './config/article_topping';
@@ -40,7 +41,7 @@
 			page_http_toparticle_config.onreadystatechange = (e) => {
 				page_http_toparticle_configs = JSON.parse(page_http_toparticle_config.responseText);
 			}
-			console.log(page_http_toparticle_config.readyState);
+			while(page_http_toparticle_config.readyState!=4){}
 			let page_http_articlelist_configs;
 			const page_http_articlelist_config = new XMLHttpRequest();
 			const page_http_articlelist_config_url = './config/article_list/'+page_articlelist_num.toString();
@@ -49,6 +50,7 @@
 			page_http_articlelist_config.onreadystatechange = (e) => {
 				page_http_articlelist_configs = JSON.parse(page_http_articlelist_config.responseText);
 			}
+			while(page_http_articlelist_config.readyState!=4){}
 		</script>
 		<title>{标题}</title>
 		<meta name="description" content="{描述}" />
