@@ -9,29 +9,6 @@
 		<meta name="force-rendering" content="webkit" />
 		<meta http-equiv="Cache-Control" content="no-transform" />
 		<meta http-equiv="Cache-Control" content="no-siteapp" />
-		<script>
-			function GetQueryString(name) {
-			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-			    var r = window.location.search.substr(1).match(reg);
-			    if (r != null)
-			        return unescape(r[2]);
-			    return undefined;
-			}
-			var page_article_id = GetQueryString("search");
-			if(page_article_id==undefined||page_article_id==""){location.href="./index.html";}
-			let page_http_get_configs;
-			const page_http_get_config = new XMLHttpRequest();
-			const page_http_get_config_url = './config/config';
-			page_http_get_config.open("GET", page_http_get_config_url);
-			page_http_get_config.send();
-			page_http_get_config.onreadystatechange = (e) => {
-				page_http_get_configs = JSON.parse(page_http_get_config.responseText);
-				if(page_http_get_config.readyState==4&&page_http_get_configs==undefined){
-					alert("数据异常，可能是网络不稳定，即将重新加载");
-					location.reload();
-				}
-			}
-		</script>
 		<title>{标题}</title>
 		<meta name="description" content="{描述}" />
 		<meta name="keywords" content="{关键词}" />
@@ -46,11 +23,6 @@
 		<link href="./access/animate.css" type="text/css" media="all" rel="stylesheet" />
 		<link href="./access/font-awesome.min.css" rel="stylesheet">
 		<link href="./access/style.css" type="text/css" media="all" rel="stylesheet" />
-		<script>
-		var page_type="article";
-		var page_title=page_http_article_configs["title"];
-		var page_body=page_http_article_configs["body"];
-		</script>
 	</head>
 	<body class="home-index">
 	<div id="load_page">
@@ -302,14 +274,6 @@
 		<div class="none">
 			<script src="./access/custom.js"></script>
 			<script src="./access/zh_tw.js"></script>
-			<script>
-				//引用base64
-				page_base64 = new Base64();
-				//加载文章标题
-				$("#page_title").text(page_base64.decode(page_title));
-				//加载文章内容
-				$("#page_body").html(page_base64.decode(page_body));
-			</script>
 			<script src="./access/home.js"></script>
 		</div>
 	</body>
