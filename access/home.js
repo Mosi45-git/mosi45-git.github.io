@@ -1,7 +1,12 @@
 //控制台输出版权
 console.log("\n %c 轻量个人博客 %c \n\n", "color: #fadfa3; background: #030307; padding:5px 0;", "color:black;background: #fadfa3; padding:5px 0;");
 
+//网站的基础变量
 let page_state = "no";//网页信息加载状态
+let page_http_get_configs;//网站网页基础信息
+let page_http_toparticle_configs;//网页置顶文章信息
+let page_http_article_configs;//网页文章内容信息
+let page_http_articlelist_configs;//网页列表信息
 
 //获取查询参数
 function GetQueryString(name) {
@@ -67,7 +72,6 @@ function page_start(){
 			false) {
 			page_articlelist_num = 1;
 		}
-		let page_http_get_configs;
 		const page_http_get_config = new XMLHttpRequest();
 		const page_http_get_config_url = './config/config';
 		page_http_get_config.open("GET", page_http_get_config_url);
@@ -75,7 +79,6 @@ function page_start(){
 		page_http_get_config.onreadystatechange = (e) => {
 			page_http_get_configs = JSON.parse(page_http_get_config.responseText);
 		}
-		let page_http_toparticle_configs;
 		const page_http_toparticle_config = new XMLHttpRequest();
 		const page_http_toparticle_config_url = './config/article_topping';
 		page_http_toparticle_config.open("GET", page_http_toparticle_config_url);
@@ -83,7 +86,6 @@ function page_start(){
 		page_http_toparticle_config.onreadystatechange = (e) => {
 			page_http_toparticle_configs = JSON.parse(page_http_toparticle_config.responseText);
 		}
-		let page_http_articlelist_configs;
 		const page_http_articlelist_config = new XMLHttpRequest();
 		const page_http_articlelist_config_url = './config/article_list/' + page_articlelist_num.toString();
 		page_http_articlelist_config.open("GET", page_http_articlelist_config_url);
@@ -119,7 +121,6 @@ function page_start(){
 		//文章页
 		var page_article_id = GetQueryString("page");
 		if(page_article_id==undefined){alert("文章不存在");location.href="./index.html";}
-		let page_http_get_configs;
 		const page_http_get_config = new XMLHttpRequest();
 		const page_http_get_config_url = './config/config';
 		page_http_get_config.open("GET", page_http_get_config_url);
@@ -127,7 +128,6 @@ function page_start(){
 		page_http_get_config.onreadystatechange = (e) => {
 			page_http_get_configs = JSON.parse(page_http_get_config.responseText);
 		}
-		let page_http_article_configs;
 		const page_http_article_config = new XMLHttpRequest();
 		const page_http_article_config_url = './config/article/'+page_article_id;
 		page_http_article_config.open("GET", page_http_article_config_url);
@@ -159,7 +159,6 @@ function page_start(){
 		//搜索页
 		var page_article_id = GetQueryString("search");
 		if(page_article_id==undefined||page_article_id==""){location.href="./index.html";}
-		let page_http_get_configs;
 		const page_http_get_config = new XMLHttpRequest();
 		const page_http_get_config_url = './config/config';
 		page_http_get_config.open("GET", page_http_get_config_url);
