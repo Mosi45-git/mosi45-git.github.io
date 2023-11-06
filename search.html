@@ -28,6 +28,10 @@
 			page_http_get_config.send();
 			page_http_get_config.onreadystatechange = (e) => {
 				page_http_get_configs = JSON.parse(page_http_get_config.responseText);
+				if(page_http_get_config.readyState==4&&page_http_get_configs==undefined){
+					alert("数据异常，可能是网络不稳定，即将重新加载");
+					location.reload();
+				}
 			}
 		</script>
 		<title>{标题}</title>
@@ -45,10 +49,6 @@
 		<link href="./access/font-awesome.min.css" rel="stylesheet">
 		<link href="./access/style.css" type="text/css" media="all" rel="stylesheet" />
 		<script>
-		if(page_http_get_configs==undefined){
-			alert("数据异常，可能是网络不稳定，即将重新加载");
-			location.reload();
-		}
 		var page_type="article";
 		var page_title=page_http_article_configs["title"];
 		var page_body=page_http_article_configs["body"];
