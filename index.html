@@ -25,7 +25,11 @@
 					page_http_get_config.send();
 					page_http_get_config.onreadystatechange = (e) => {
 						let page_xhr = JSON.parse(page_http_get_config.responseText);
-						return page_xhr;
+						if(page_xhr['备注']==null){
+							return runget(url);
+						}else{
+							return page_xhr;
+						}
 					}
 				}catch(err){
 					console.log("通信存在故障");
