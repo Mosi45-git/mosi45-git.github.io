@@ -287,7 +287,7 @@ function page_end(){
 		//引用base64
 		page_base64 = new Base64();
 		//加载网页
-		$("title").text("搜索‘"page_article_id+"’-"+page_http_get_configs['title']+" - "+page_http_get_configs['titles']);
+		$("title").text("搜索‘"+page_article_id+"’-"+page_http_get_configs['title']+" - "+page_http_get_configs['titles']);
 		//渲染搜索词
 		$("#search_texts").text(page_article_id);
 	}
