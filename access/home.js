@@ -1,5 +1,5 @@
 //控制台输出版权
-console.log("\n %c 轻量个人博客 %c 开发者:陌斯\n\n", "color: #fadfa3; background: #030307; padding:5px 0;", "color:black;background: #fadfa3; padding:5px 0;");
+console.log("\n %c 轻量个人博客 %c 开发者:陌斯 %c 信息公开型博客 \n\n", "color: #fadfa3; background: #030307; padding:5px 0;", "color:black;background: #fadfa3; padding:5px 0;");
 
 //网站的基础全局变量
 let page_state = "no";//网页信息加载状态
