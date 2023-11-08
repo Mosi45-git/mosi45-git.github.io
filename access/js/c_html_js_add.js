@@ -1,5 +1,5 @@
 document.writeln(
-	"<script src='./access/js/prism.js' type='text/javascript'><\/script><link rel='stylesheet' type='text/css' href='./access/js/prism.css'/>"
+	"<script src='./access/js/prism.js' type='text/javascript'><\/script><link rel='stylesheet' type='text/css' href='./access/css/prism.css'/>"
 	);
 $(function() {
 	var compatibility = {
